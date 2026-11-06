@@ -1,0 +1,106 @@
+# ==============================================================================
+#  Build and attach the CLI executables to a published GitHub release.
+# ==============================================================================
+
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag of an existing published release"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.event.release.tag_name || inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x86_64
+            os: ubuntu-24.04
+            asset: sortrace_cli-linux-x86_64
+            executable: build/bin/sortrace_cli
+          - name: Windows x86_64
+            os: windows-latest
+            asset: sortrace_cli-windows-x86_64.exe
+            executable: build/bin/Release/sortrace_cli.exe
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ github.event.release.tag_name || inputs.tag }}
+
+      - name: Configure Linux
+        if: runner.os == 'Linux'
+        env:
+          CXX: g++-13
+        run: >-
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          -DSORTRACE_BUILD_TESTS=OFF -DSORTRACE_STRICT_WARNINGS=ON
+          "-DCMAKE_EXE_LINKER_FLAGS=-static-libstdc++ -static-libgcc"
+
+      - name: Configure Windows
+        if: runner.os == 'Windows'
+        run: >-
+          cmake -S . -B build -A x64 -DSORTRACE_BUILD_TESTS=OFF
+          -DSORTRACE_STRICT_WARNINGS=ON -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+
+      - name: Build CLI
+        run: cmake --build build --config Release --target sortrace_cli
+
+      - name: Verify and stage CLI
+        shell: pwsh
+        env:
+          EXECUTABLE: ${{ matrix.executable }}
+          ASSET: ${{ matrix.asset }}
+        run: |
+          & $env:EXECUTABLE --help
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          New-Item -ItemType Directory -Path dist | Out-Null
+          Copy-Item $env:EXECUTABLE (Join-Path dist $env:ASSET)
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ${{ matrix.asset }}
+          path: dist/${{ matrix.asset }}
+          if-no-files-found: error
+
+  publish:
+    name: Attach release assets
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Upload to published release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          draft=$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)
+          if [ "$draft" != "false" ]; then
+            echo "::error::Release '$RELEASE_TAG' must be published before uploading assets."
+            exit 1
+          fi
+          gh release upload "$RELEASE_TAG" \
+            dist/sortrace_cli-linux-x86_64 \
+            dist/sortrace_cli-windows-x86_64.exe \
+            --clobber
