@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="520" viewBox="0 0 1600 520">
+  <defs>
+    <clipPath id="clip-path-1">
+      <path d="M24 0 L1576 0 C1589.255 0 1600 10.745 1600 24 L1600 496 C1600 509.255 1589.255 520 1576 520 L24 520 C10.745 520 0 509.255 0 496 L0 24 C0 10.745 10.745 0 24 0 Z"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-1" x1="0" y1="0" x2="305.709" y2="940.644" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#101b29"/>
+      <stop offset="0.52" stop-color="#0b1420"/>
+      <stop offset="1" stop-color="#101e2c"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path d="M0 0 L40 0 L40 40 L0 40 Z"/>
+    </clipPath>
+    <pattern id="pattern-1" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="matrix(1 0 0 1 0 0)">
+      <g clip-path="url(#clip-path-2)">
+        <polyline points="40,0 0,0 0,40" fill="none" stroke="#8ba2b9" stroke-opacity="0.055"/>
+      </g>
+    </pattern>
+    <radialGradient id="radial-gradient-1" cx="0" cy="0" r="390" gradientTransform="matrix(1 0 0 0.769 1440 85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#42cbb9" stop-opacity="0.23"/>
+      <stop offset="1" stop-color="#42cbb9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="0" cy="0" r="520" gradientTransform="matrix(1 0 0 0.481 1050 520)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#438ed0" stop-opacity="0.17"/>
+      <stop offset="1" stop-color="#438ed0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient-2" x1="82" y1="76" x2="208" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67dfcf"/>
+      <stop offset="1" stop-color="#579ff0"/>
+    </linearGradient>
+    <radialGradient id="radial-gradient-3" cx="0" cy="0" r="399.5" gradientTransform="matrix(1 0 0 0.473 1100.5 248)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#438ed0" stop-opacity="0.17"/>
+      <stop offset="1" stop-color="#438ed0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient-3" x1="766" y1="224.015" x2="766" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#61b8f3"/>
+      <stop offset="1" stop-color="#286b9e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="824" y1="169.239" x2="824" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#61b8f3"/>
+      <stop offset="1" stop-color="#286b9e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="882" y1="256.881" x2="882" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bca3ff"/>
+      <stop offset="1" stop-color="#765bc5"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="940" y1="180.195" x2="940" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f2bd68"/>
+      <stop offset="1" stop-color="#b87937"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-7" x1="998" y1="224.015" x2="998" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#61b8f3"/>
+      <stop offset="1" stop-color="#286b9e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="1056" y1="196.627" x2="1056" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#61b8f3"/>
+      <stop offset="1" stop-color="#286b9e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-9" x1="1114" y1="229.493" x2="1114" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#61b8f3"/>
+      <stop offset="1" stop-color="#286b9e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-10" x1="1172" y1="218.538" x2="1172" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#61b8f3"/>
+      <stop offset="1" stop-color="#286b9e"/>
+    </linearGradient>
+  </defs>
+  <title>sortrace-banner.svg</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <g clip-path="url(#clip-path-1)">
+      <rect x="0" y="0" width="1600" height="520" fill="url(#linear-gradient-1)"/>
+      <rect x="0" y="0" width="1600" height="520" fill="url(#pattern-1)"/>
+      <ellipse cx="1440" cy="85" rx="390" ry="300" fill="url(#radial-gradient-1)"/>
+      <ellipse cx="1050" cy="520" rx="520" ry="250" fill="url(#radial-gradient-2)"/>
+      <circle cx="1500" cy="-45" r="235" fill="none" stroke="#4dc8b8" stroke-opacity="0.1" stroke-width="42"/>
+      <circle cx="1500" cy="-45" r="205" fill="none" stroke="#68d9ca" stroke-opacity="0.12" stroke-width="1.5"/>
+      <circle cx="1500" cy="-45" r="170" fill="none" stroke="#6aa8ef" stroke-opacity="0.07"/>
+      <path d="M84.5 76 L205.5 76 C206.881 76 208 77.119 208 78.5 L208 78.5 C208 79.881 206.881 81 205.5 81 L84.5 81 C83.119 81 82 79.881 82 78.5 L82 78.5 C82 77.119 83.119 76 84.5 76 Z" fill="url(#linear-gradient-2)"/>
+      <text transform="matrix(1 0 0 1 80 170)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="82" font-weight="bold" fill="#f0f5fb" letter-spacing="2.5"><tspan x="0" y="0">SORTRACE</tspan></text>
+      <text transform="matrix(1 0 0 1 84 220)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="31" font-weight="500" fill="#c1d0e0" letter-spacing="0.2"><tspan x="0" y="0">Sorting, step by step.</tspan></text>
+      <g>
+        <circle cx="91" cy="282" r="6" fill="#67dfcf"/>
+        <text transform="matrix(1 0 0 1 110 288)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#73e2d1" letter-spacing="2"><tspan x="0" y="0">RECORD</tspan></text>
+        <circle cx="239" cy="282" r="3.5" fill="#607b96"/>
+        <text transform="matrix(1 0 0 1 260 288)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#b8c8d9" letter-spacing="2"><tspan x="0" y="0">REPLAY</tspan></text>
+        <circle cx="384" cy="282" r="3.5" fill="#607b96"/>
+        <text transform="matrix(1 0 0 1 405 288)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#b8c8d9" letter-spacing="2"><tspan x="0" y="0">INSPECT</tspan></text>
+      </g>
+      <line x1="84" y1="322" x2="650" y2="322" fill="#000000" stroke="#344b61" stroke-width="1.5"/>
+      <line x1="84" y1="322" x2="280" y2="322" fill="#000000" opacity="0.55"/>
+      <g opacity="0.32">
+        <path d="M86 434 L86 386 L106 386 L106 434 M116 434 L116 360 L136 360 L136 434 M146 434 L146 402 L166 402 L166 434 M176 434 L176 376 L196 376 L196 434 M206 434 L206 414 L226 414 L226 434 M236 434 L236 390 L256 390 L256 434 M266 434 L266 370 L286 370 L286 434 M296 434 L296 404 L316 404 L316 434 M326 434 L326 384 L346 384 L346 434 M356 434 L356 416 L376 416 L376 434 M386 434 L386 394 L406 394 L406 434 M416 434 L416 406 L436 406 L436 434" fill="#3d86b8"/>
+        <line x1="86" y1="434" x2="448" y2="434" fill="#000000" stroke="#58738e"/>
+      </g>
+      <g>
+        <path d="M719.512 58 L1480.488 58 C1491.264 58 1500 66.954 1500 78 L1500 418 C1500 429.046 1491.264 438 1480.488 438 L719.512 438 C708.736 438 700 429.046 700 418 L700 78 C700 66.954 708.736 58 719.512 58 Z" fill="#101d2b" fill-opacity="0.92" stroke="#304a63" stroke-width="1.6"/>
+        <path d="M719.559 59 L1481.441 59 C1491.691 59 1500 67.507 1500 78 L1500 418 C1500 428.493 1491.691 437 1481.441 437 L719.559 437 C709.309 437 701 428.493 701 418 L701 78 C701 67.507 709.309 59 719.559 59 Z" fill="url(#radial-gradient-3)" opacity="0.28"/>
+      </g>
+      <text transform="matrix(1 0 0 1 730.807 104.193)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="bold" fill="#9bb3ca" letter-spacing="2"><tspan x="0" y="0">TRACE / 008</tspan></text>
+      <g>
+        <path d="M1308 76 L1466 76 C1475.941 76 1484 84.059 1484 94 L1484 94 C1484 103.941 1475.941 112 1466 112 L1308 112 C1298.059 112 1290 103.941 1290 94 L1290 94 C1290 84.059 1298.059 76 1308 76 Z" fill="#1a3044" stroke="#35536d"/>
+        <circle cx="1307.584" cy="94" r="4.523" fill="#67dfcf"/>
+        <text transform="matrix(1.257 0 0 1.257 1325 99.031)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#c5d5e5" letter-spacing="0.8"><tspan x="0" y="0">SAME RECORDING</tspan></text>
+      </g>
+      <line x1="723.558" y1="126" x2="1477.558" y2="126" fill="#000000" stroke="#31485e" stroke-width="1.2"/>
+      <g>
+        <line x1="732" y1="174" x2="1275" y2="174" fill="#000000" stroke="#385169" stroke-opacity="0.55" stroke-dasharray="5 7"/>
+        <line x1="732" y1="222" x2="1275" y2="222" fill="#000000" stroke="#385169" stroke-opacity="0.55" stroke-dasharray="5 7"/>
+        <line x1="732" y1="270" x2="1275" y2="270" fill="#000000" stroke="#385169" stroke-opacity="0.55" stroke-dasharray="5 7"/>
+        <line x1="732" y1="318" x2="1275" y2="318" fill="#000000" stroke="#385169" stroke-opacity="0.55" stroke-dasharray="5 7"/>
+      </g>
+      <line x1="732" y1="350" x2="1275" y2="350" fill="#000000" stroke="#6e879f" stroke-width="1.4"/>
+      <g>
+        <g>
+          <path d="M774 224.015 L800 224.015 C804.418 224.015 808 227.939 808 232.78 L808 341.236 C808 346.076 804.418 350 800 350 L774 350 C769.582 350 766 346.076 766 341.236 L766 232.78 C766 227.939 769.582 224.015 774 224.015 Z" fill="url(#linear-gradient-3)"/>
+          <path d="M832 169.239 L858 169.239 C862.418 169.239 866 173.163 866 178.004 L866 341.236 C866 346.076 862.418 350 858 350 L832 350 C827.582 350 824 346.076 824 341.236 L824 178.004 C824 173.163 827.582 169.239 832 169.239 Z" fill="url(#linear-gradient-4)"/>
+          <path d="M890 256.881 L916 256.881 C920.418 256.881 924 260.805 924 265.645 L924 341.236 C924 346.076 920.418 350 916 350 L890 350 C885.582 350 882 346.076 882 341.236 L882 265.645 C882 260.805 885.582 256.881 890 256.881 Z" fill="url(#linear-gradient-5)" stroke="#b69aff" stroke-width="1.5"/>
+          <path d="M948 180.195 L974 180.195 C978.418 180.195 982 184.118 982 188.959 L982 341.236 C982 346.076 978.418 350 974 350 L948 350 C943.582 350 940 346.076 940 341.236 L940 188.959 C940 184.118 943.582 180.195 948 180.195 Z" fill="url(#linear-gradient-6)" stroke="#e8ad5b"/>
+          <path d="M1006 224.015 L1032 224.015 C1036.418 224.015 1040 227.939 1040 232.78 L1040 341.236 C1040 346.076 1036.418 350 1032 350 L1006 350 C1001.582 350 998 346.076 998 341.236 L998 232.78 C998 227.939 1001.582 224.015 1006 224.015 Z" fill="url(#linear-gradient-7)"/>
+          <path d="M1064 196.627 L1090 196.627 C1094.418 196.627 1098 200.551 1098 205.392 L1098 341.236 C1098 346.076 1094.418 350 1090 350 L1064 350 C1059.582 350 1056 346.076 1056 341.236 L1056 205.392 C1056 200.551 1059.582 196.627 1064 196.627 Z" fill="url(#linear-gradient-8)"/>
+          <path d="M1122 229.493 L1148 229.493 C1152.418 229.493 1156 233.417 1156 238.257 L1156 341.236 C1156 346.076 1152.418 350 1148 350 L1122 350 C1117.582 350 1114 346.076 1114 341.236 L1114 238.257 C1114 233.417 1117.582 229.493 1122 229.493 Z" fill="url(#linear-gradient-9)"/>
+          <path d="M1180 218.538 L1206 218.538 C1210.418 218.538 1214 222.462 1214 227.302 L1214 341.236 C1214 346.076 1210.418 350 1206 350 L1180 350 C1175.582 350 1172 346.076 1172 341.236 L1172 227.302 C1172 222.462 1175.582 218.538 1180 218.538 Z" fill="url(#linear-gradient-10)"/>
+        </g>
+      </g>
+      <g>
+        <text transform="matrix(1 0 0 1 787 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">0</tspan></text>
+        <text transform="matrix(1 0 0 1 845 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">1</tspan></text>
+        <text transform="matrix(1 0 0 1 903 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+        <text transform="matrix(1 0 0 1 961 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+        <text transform="matrix(1 0 0 1 1019 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">4</tspan></text>
+        <text transform="matrix(1 0 0 1 1077 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">5</tspan></text>
+        <text transform="matrix(1 0 0 1 1135 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">6</tspan></text>
+        <text transform="matrix(1 0 0 1 1193 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8fa7bf" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      </g>
+      <g>
+        <circle cx="1345.037" cy="201.359" r="6.567" fill="#e6ad5d"/>
+        <text transform="matrix(1.313 0 0 1.313 1366.052 207.927)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#b9c9d9"><tspan x="0" y="0">COMPARE</tspan></text>
+        <circle cx="1345.037" cy="256.525" r="6.567" fill="#b69aff"/>
+        <text transform="matrix(1.313 0 0 1.313 1366.052 263.092)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#b9c9d9"><tspan x="0" y="0">PIVOT</tspan></text>
+        <circle cx="1345.037" cy="311.69" r="6.567" fill="#67dfcf"/>
+        <text transform="matrix(1.313 0 0 1.313 1366.052 318.258)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#b9c9d9"><tspan x="0" y="0">SORTED</tspan></text>
+      </g>
+      <line x1="723.558" y1="397" x2="1477.558" y2="397" fill="#000000" stroke="#31485e"/>
+      <text transform="matrix(1 0 0 1 1100.5 419)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#718ba5" letter-spacing="2" text-anchor="middle"><tspan x="0" y="0">FROM OPERATIONS TO PLAYBACK</tspan></text>
+      <line x1="48" y1="472" x2="1552" y2="472" fill="#000000" stroke="#263b50"/>
+      <circle cx="70" cy="493" r="5" fill="#b69aff"/>
+      <circle cx="70" cy="493" r="10" fill="none" stroke="#b69aff" stroke-opacity="0.28"/>
+      <text transform="matrix(1 0 0 1 91 498)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8096ad" letter-spacing="2"><tspan x="0" y="0">C++ SORTING ALGORITHM TRACE LIBRARY</tspan></text>
+    </g>
+  </g>
+</svg>

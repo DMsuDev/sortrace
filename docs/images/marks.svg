@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1400" height="760" viewBox="0 0 1400 760">
+  <defs>
+    <linearGradient id="linear-gradient-1" x1="0" y1="0" x2="637.327" y2="1174.023" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#101722"/>
+      <stop offset="1" stop-color="#0b111a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="76" y1="62" x2="118" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67d8c2"/>
+      <stop offset="1" stop-color="#6aa8f7"/>
+    </linearGradient>
+  </defs>
+  <title>marks-readme.svg</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M24 0 L1376 0 C1389.255 0 1400 10.745 1400 24 L1400 736 C1400 749.255 1389.255 760 1376 760 L24 760 C10.745 760 0 749.255 0 736 L0 24 C0 10.745 10.745 0 24 0 Z" fill="url(#linear-gradient-1)"/>
+    <path d="M78.5 62 L115.5 62 C116.881 62 118 63.119 118 64.5 L118 64.5 C118 65.881 116.881 67 115.5 67 L78.5 67 C77.119 67 76 65.881 76 64.5 L76 64.5 C76 63.119 77.119 62 78.5 62 Z" fill="url(#linear-gradient-2)"/>
+    <text transform="matrix(1 0 0 1 76 118)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="36" font-weight="600" fill="#edf3fa"><tspan x="0" y="0">A mark follows its element</tspan></text>
+    <text transform="matrix(1 0 0 1 76 154)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#a9b8ca"><tspan x="0" y="0">Marks belong to values, not fixed array positions.</tspan></text>
+    <g>
+      <path d="M1143 82 L1301 82 C1313.703 82 1324 92.297 1324 105 L1324 105 C1324 117.703 1313.703 128 1301 128 L1143 128 C1130.297 128 1120 117.703 1120 105 L1120 105 C1120 92.297 1130.297 82 1143 82 Z" fill="#211d36" stroke="#55447c" stroke-width="1.5"/>
+      <circle cx="1145" cy="105" r="6" fill="#b69aff"/>
+      <text transform="matrix(1 0 0 1 1165 112)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#d7cafa" letter-spacing="0.3"><tspan x="0" y="0">PIVOT MARK</tspan></text>
+    </g>
+    <path d="M94 196 L1306 196 C1315.941 196 1324 204.059 1324 214 L1324 398 C1324 407.941 1315.941 416 1306 416 L94 416 C84.059 416 76 407.941 76 398 L76 214 C76 204.059 84.059 196 94 196 Z" fill="#131d2a" stroke="#2a3a4f" stroke-width="1.5"/>
+    <text transform="matrix(1 0 0 1 112 244)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="21" font-weight="600" fill="#e5edf7" letter-spacing="0.6"><tspan x="0" y="0">BEFORE</tspan></text>
+    <text transform="matrix(1 0 0 1 112 278)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#a9b8ca"><tspan x="0" y="0">MarkSet(Pivot, 2)</tspan></text>
+    <text transform="matrix(1 0 0 1 112 374)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#8193aa"><tspan x="0" y="0">ARRAY INDEX</tspan></text>
+    <g>
+      <g>
+        <path d="M442 260 L530 260 C536.627 260 542 265.373 542 272 L542 330 C542 336.627 536.627 342 530 342 L442 342 C435.373 342 430 336.627 430 330 L430 272 C430 265.373 435.373 260 442 260 Z" fill="#263548" stroke="#3a4c63" stroke-width="1.5"/>
+        <text transform="matrix(1 0 0 1 486 312)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="600" fill="#f0f4fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+        <text transform="matrix(1 0 0 1 486 374)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#93a5bb" text-anchor="middle"><tspan x="0" y="0">0</tspan></text>
+      </g>
+      <g>
+        <path d="M602 260 L690 260 C696.627 260 702 265.373 702 272 L702 330 C702 336.627 696.627 342 690 342 L602 342 C595.373 342 590 336.627 590 330 L590 272 C590 265.373 595.373 260 602 260 Z" fill="#263548" stroke="#3a4c63" stroke-width="1.5"/>
+        <text transform="matrix(1 0 0 1 646 312)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="600" fill="#f0f4fa" text-anchor="middle"><tspan x="0" y="0">1</tspan></text>
+        <text transform="matrix(1 0 0 1 646 374)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#93a5bb" text-anchor="middle"><tspan x="0" y="0">1</tspan></text>
+      </g>
+      <g>
+        <path d="M764 256 L856 256 C863.732 256 870 262.268 870 270 L870 332 C870 339.732 863.732 346 856 346 L764 346 C756.268 346 750 339.732 750 332 L750 270 C750 262.268 756.268 256 764 256 Z" fill="#2b2342" stroke="#b69aff" stroke-width="3"/>
+        <text transform="matrix(1 0 0 1 810 312)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="600" fill="#f4efff" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+        <text transform="matrix(1 0 0 1 810 374)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#c8b5ff" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+      </g>
+    </g>
+    <path d="M782 211 L838 211 C847.389 211 855 218.611 855 228 L855 228 C855 237.389 847.389 245 838 245 L782 245 C772.611 245 765 237.389 765 228 L765 228 C765 218.611 772.611 211 782 211 Z" fill="#382b59" stroke="#765da9" stroke-width="1.5"/>
+    <text transform="matrix(1 0 0 1 810 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#d7cafa" text-anchor="middle"><tspan x="0" y="0">PIVOT</tspan></text>
+    <line x1="810" y1="245" x2="810" y2="254" fill="#000000" stroke="#b69aff" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="970" y1="232" x2="970" y2="380" fill="#000000" stroke="#2c3b50" stroke-width="1.5"/>
+    <text transform="matrix(1 0 0 1 1012 270)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#91a2b8" letter-spacing="0.5"><tspan x="0" y="0">TRACKED VALUE</tspan></text>
+    <text transform="matrix(1 0 0 1 1012 316)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="30" font-weight="600" fill="#e8eef7"><tspan x="0" y="0">2</tspan></text>
+    <text transform="matrix(1 0 0 1 1012 352)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#b69aff"><tspan x="0" y="0">at index 2</tspan></text>
+    <g>
+      <path d="M572 434 L828 434 C841.255 434 852 444.745 852 458 L852 458 C852 471.255 841.255 482 828 482 L572 482 C558.745 482 548 471.255 548 458 L548 458 C548 444.745 558.745 434 572 434 Z" fill="#1b2b38" stroke="#355064" stroke-width="1.5"/>
+      <path d="M584 458 L626 458 M618 450 L626 458 L618 466" fill="none" stroke="#79cdbd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="matrix(1 0 0 1 700 465)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#c7d6e5" text-anchor="middle"><tspan x="0" y="0">SWAP(1, 2)</tspan></text>
+      <path d="M774 458 L816 458 M808 450 L816 458 L808 466" fill="none" stroke="#79cdbd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <path d="M94 502 L1306 502 C1315.941 502 1324 510.059 1324 520 L1324 704 C1324 713.941 1315.941 722 1306 722 L94 722 C84.059 722 76 713.941 76 704 L76 520 C76 510.059 84.059 502 94 502 Z" fill="#131d2a" stroke="#2a3a4f" stroke-width="1.5"/>
+    <text transform="matrix(1 0 0 1 112 550)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="21" font-weight="600" fill="#e5edf7" letter-spacing="0.6"><tspan x="0" y="0">AFTER SWAP(1, 2)</tspan></text>
+    <text transform="matrix(1 0 0 1 112 584)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#a9b8ca"><tspan x="0" y="0">The marked value changes position</tspan></text>
+    <text transform="matrix(1 0 0 1 112 668.32)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#8193aa"><tspan x="0" y="0">ARRAY INDEX</tspan></text>
+    <g>
+      <g>
+        <path d="M442 566 L530 566 C536.627 566 542 571.373 542 578 L542 636 C542 642.627 536.627 648 530 648 L442 648 C435.373 648 430 642.627 430 636 L430 578 C430 571.373 435.373 566 442 566 Z" fill="#263548" stroke="#3a4c63" stroke-width="1.5"/>
+        <text transform="matrix(1 0 0 1 486 618)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="600" fill="#f0f4fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+        <text transform="matrix(1 0 0 1 486 678)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#93a5bb" text-anchor="middle"><tspan x="0" y="0">0</tspan></text>
+      </g>
+      <g>
+        <path d="M604 562 L696 562 C703.732 562 710 568.268 710 576 L710 638 C710 645.732 703.732 652 696 652 L604 652 C596.268 652 590 645.732 590 638 L590 576 C590 568.268 596.268 562 604 562 Z" fill="#2b2342" stroke="#b69aff" stroke-width="3"/>
+        <text transform="matrix(1 0 0 1 650 618)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="600" fill="#f4efff" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+        <text transform="matrix(1 0 0 1 650 678)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#c8b5ff" text-anchor="middle"><tspan x="0" y="0">1</tspan></text>
+      </g>
+      <g>
+        <path d="M770 566 L858 566 C864.627 566 870 571.373 870 578 L870 636 C870 642.627 864.627 648 858 648 L770 648 C763.373 648 758 642.627 758 636 L758 578 C758 571.373 763.373 566 770 566 Z" fill="#263548" stroke="#3a4c63" stroke-width="1.5"/>
+        <text transform="matrix(1 0 0 1 814 618)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="600" fill="#f0f4fa" text-anchor="middle"><tspan x="0" y="0">1</tspan></text>
+        <text transform="matrix(1 0 0 1 814 678)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#93a5bb" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+      </g>
+    </g>
+    <path d="M622 517 L678 517 C687.389 517 695 524.611 695 534 L695 534 C695 543.389 687.389 551 678 551 L622 551 C612.611 551 605 543.389 605 534 L605 534 C605 524.611 612.611 517 622 517 Z" fill="#382b59" stroke="#765da9" stroke-width="1.5"/>
+    <text transform="matrix(1 0 0 1 650 540)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#d7cafa" text-anchor="middle"><tspan x="0" y="0">PIVOT</tspan></text>
+    <line x1="650" y1="551" x2="650" y2="560" fill="#000000" stroke="#b69aff" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="970" y1="538" x2="970" y2="686" fill="#000000" stroke="#2c3b50" stroke-width="1.5"/>
+    <text transform="matrix(1 0 0 1 1012 576)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#91a2b8" letter-spacing="0.5"><tspan x="0" y="0">SAME ELEMENT</tspan></text>
+    <text transform="matrix(1 0 0 1 1012 622)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="30" font-weight="600" fill="#e8eef7"><tspan x="0" y="0">2</tspan></text>
+    <text transform="matrix(1 0 0 1 1012 658)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#b69aff"><tspan x="0" y="0">now at index 1</tspan></text>
+  </g>
+</svg>

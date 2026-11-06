@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="500" viewBox="0 0 1200 500">
+  <defs>
+    <linearGradient id="linear-gradient-1" x1="0" y1="0" x2="355.03" y2="852.071" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#101722"/>
+      <stop offset="1" stop-color="#0b111a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="64" y1="48" x2="98" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67d8c2"/>
+      <stop offset="1" stop-color="#6aa8f7"/>
+    </linearGradient>
+    <filter id="filter-1" filterUnits="userSpaceOnUse" x="-0.5" y="111.5" width="1201" height="257" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="14"/><feOffset dx="0" dy="10" result="shadow"/><feFlood flood-color="#000000" flood-opacity="0.22"/><feComposite in2="shadow" operator="in" result="paint"/><feMerge><feMergeNode in="paint"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <title>pipeline-redesigned.svg</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M24 0 L1176 0 C1189.255 0 1200 10.745 1200 24 L1200 476 C1200 489.255 1189.255 500 1176 500 L24 500 C10.745 500 0 489.255 0 476 L0 24 C0 10.745 10.745 0 24 0 Z" fill="url(#linear-gradient-1)"/>
+    <g>
+      <path d="M890 55 C890 35.818 893 17.337 898.558 0 L1001.874 0 L1176 0 C1189.255 0 1200 10.745 1200 24 L1200 116.829 L1200 116.829 L1200 179.499 C1167.235 213.703 1121.105 235 1070 235 C970.589 235 890 154.411 890 55 Z" fill="#1b3650" opacity="0.1"/>
+      <path d="M985 60 C985 38.013 991.17 17.467 1001.874 0 L1176 0 C1189.255 0 1200 10.745 1200 24 L1200 116.829 C1180.213 151.572 1142.842 175 1100 175 C1036.487 175 985 123.513 985 60 Z" fill="#6bd5c1" opacity="0.035"/>
+    </g>
+    <path d="M66 48 L96 48 C97.105 48 98 48.895 98 50 L98 50 C98 51.105 97.105 52 96 52 L66 52 C64.895 52 64 51.105 64 50 L64 50 C64 48.895 64.895 48 66 48 Z" fill="url(#linear-gradient-2)"/>
+    <text transform="matrix(1 0 0 1 64 86)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="bold" fill="#e8eef7" letter-spacing="-0.7"><tspan x="0" y="0">From algorithm to playback</tspan></text>
+    <text transform="matrix(1 0 0 1 64 113)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" fill="#8292a8"><tspan x="0" y="0">A single recording separates sorting logic from visualization.</tspan></text>
+    <g>
+      <path d="M1056.532 50 L1162.532 50 C1170.816 50 1177.532 56.716 1177.532 65 L1177.532 65 C1177.532 73.284 1170.816 80 1162.532 80 L1056.532 80 C1048.248 80 1041.532 73.284 1041.532 65 L1041.532 65 C1041.532 56.716 1048.248 50 1056.532 50 Z" fill="#17283a" stroke="#29435b"/>
+      <circle cx="1057.532" cy="65" r="4" fill="#70d7c3"/>
+      <text transform="matrix(1 0 0 1 1070.532 69)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#b8c8d9" letter-spacing="0.4"><tspan x="0" y="0">DATA FLOW</tspan></text>
+    </g>
+    <g filter="url(#filter-1)">
+      <g>
+        <path d="M70 166 L234 166 C242.837 166 250 173.163 250 182 L250 298 C250 306.837 242.837 314 234 314 L70 314 C61.163 314 54 306.837 54 298 L54 182 C54 173.163 61.163 166 70 166 Z" fill="#131d2a" stroke="#263548"/>
+        <path d="M302 166 L466 166 C474.837 166 482 173.163 482 182 L482 298 C482 306.837 474.837 314 466 314 L302 314 C293.163 314 286 306.837 286 298 L286 182 C286 173.163 293.163 166 302 166 Z" fill="#131d2a" stroke="#263548"/>
+        <path d="M534 166 L698 166 C706.837 166 714 173.163 714 182 L714 298 C714 306.837 706.837 314 698 314 L534 314 C525.163 314 518 306.837 518 298 L518 182 C518 173.163 525.163 166 534 166 Z" fill="#131d2a" stroke="#263548"/>
+        <path d="M766 166 L930 166 C938.837 166 946 173.163 946 182 L946 298 C946 306.837 938.837 314 930 314 L766 314 C757.163 314 750 306.837 750 298 L750 182 C750 173.163 757.163 166 766 166 Z" fill="#171d30" stroke="#57477d"/>
+        <path d="M998 166 L1130 166 C1138.837 166 1146 173.163 1146 182 L1146 298 C1146 306.837 1138.837 314 1130 314 L998 314 C989.163 314 982 306.837 982 298 L982 182 C982 173.163 989.163 166 998 166 Z" fill="#131d2a" stroke="#263548"/>
+      </g>
+    </g>
+    <g>
+      <g>
+        <path d="M85 178.5 L103 178.5 C106.866 178.5 110 181.634 110 185.5 L110 195.5 C110 199.366 106.866 202.5 103 202.5 L85 202.5 C81.134 202.5 78 199.366 78 195.5 L78 185.5 C78 181.634 81.134 178.5 85 178.5 Z" fill="#1d3448"/>
+        <text transform="matrix(1 0 0 1 94 194.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8fc7f5" text-anchor="middle"><tspan x="0" y="0">01</tspan></text>
+        <text transform="matrix(1 0 0 1 78 236.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#e6edf6"><tspan x="0" y="0">Algorithm</tspan></text>
+        <text transform="matrix(1 0 0 1 78 260.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" fill="#8192a8"><tspan x="0" y="0">Sorting logic</tspan></text>
+        <path d="M85 276.5 L219 276.5 C222.866 276.5 226 279.634 226 283.5 L226 294.5 C226 298.366 222.866 301.5 219 301.5 L85 301.5 C81.134 301.5 78 298.366 78 294.5 L78 283.5 C78 279.634 81.134 276.5 85 276.5 Z" fill="#1a2c3d"/>
+        <text transform="matrix(1 0 0 1 152 293.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#9bc8e8" text-anchor="middle"><tspan x="0" y="0">co_yield Step</tspan></text>
+      </g>
+      <g>
+        <path d="M317 178.5 L335 178.5 C338.866 178.5 342 181.634 342 185.5 L342 195.5 C342 199.366 338.866 202.5 335 202.5 L317 202.5 C313.134 202.5 310 199.366 310 195.5 L310 185.5 C310 181.634 313.134 178.5 317 178.5 Z" fill="#1d3448"/>
+        <text transform="matrix(1 0 0 1 326 194.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8fc7f5" text-anchor="middle"><tspan x="0" y="0">02</tspan></text>
+        <text transform="matrix(1 0 0 1 310 236.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#e6edf6"><tspan x="0" y="0">GeneratorSort</tspan></text>
+        <text transform="matrix(1 0 0 1 310 260.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" fill="#8192a8"><tspan x="0" y="0">Resumes + validates</tspan></text>
+        <path d="M317 276.5 L451 276.5 C454.866 276.5 458 279.634 458 283.5 L458 294.5 C458 298.366 454.866 301.5 451 301.5 L317 301.5 C313.134 301.5 310 298.366 310 294.5 L310 283.5 C310 279.634 313.134 276.5 317 276.5 Z" fill="#1a2c3d"/>
+        <text transform="matrix(1 0 0 1 384 293.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#9bc8e8" text-anchor="middle"><tspan x="0" y="0">StepGenerator</tspan></text>
+      </g>
+      <g>
+        <path d="M549 178.5 L567 178.5 C570.866 178.5 574 181.634 574 185.5 L574 195.5 C574 199.366 570.866 202.5 567 202.5 L549 202.5 C545.134 202.5 542 199.366 542 195.5 L542 185.5 C542 181.634 545.134 178.5 549 178.5 Z" fill="#1d3448"/>
+        <text transform="matrix(1 0 0 1 558 194.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8fc7f5" text-anchor="middle"><tspan x="0" y="0">03</tspan></text>
+        <text transform="matrix(1 0 0 1 542 236.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#e6edf6"><tspan x="0" y="0">Recorder</tspan></text>
+        <text transform="matrix(1 0 0 1 542 260.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" fill="#8192a8"><tspan x="0" y="0">Applies Step</tspan></text>
+        <path d="M549 276.5 L683 276.5 C686.866 276.5 690 279.634 690 283.5 L690 294.5 C690 298.366 686.866 301.5 683 301.5 L549 301.5 C545.134 301.5 542 298.366 542 294.5 L542 283.5 C542 279.634 545.134 276.5 549 276.5 Z" fill="#1a2c3d"/>
+        <text transform="matrix(1 0 0 1 616 293.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#9bc8e8" text-anchor="middle"><tspan x="0" y="0">creates Operation</tspan></text>
+      </g>
+      <g>
+        <path d="M781 178.5 L799 178.5 C802.866 178.5 806 181.634 806 185.5 L806 195.5 C806 199.366 802.866 202.5 799 202.5 L781 202.5 C777.134 202.5 774 199.366 774 195.5 L774 185.5 C774 181.634 777.134 178.5 781 178.5 Z" fill="#2b2342"/>
+        <text transform="matrix(1 0 0 1 790 194.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#c6b3ff" text-anchor="middle"><tspan x="0" y="0">04</tspan></text>
+        <text transform="matrix(1 0 0 1 774 236.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#e6edf6"><tspan x="0" y="0">Recording</tspan></text>
+        <text transform="matrix(1 0 0 1 774 260.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" fill="#8192a8"><tspan x="0" y="0">Immutable result</tspan></text>
+        <path d="M781 276.5 L915 276.5 C918.866 276.5 922 279.634 922 283.5 L922 294.5 C922 298.366 918.866 301.5 915 301.5 L781 301.5 C777.134 301.5 774 298.366 774 294.5 L774 283.5 C774 279.634 777.134 276.5 781 276.5 Z" fill="#28233d"/>
+        <text transform="matrix(1 0 0 1 848 293.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#c8b8f0" text-anchor="middle"><tspan x="0" y="0">input · operations · stats</tspan></text>
+      </g>
+      <g>
+        <path d="M1011 178.5 L1029 178.5 C1032.866 178.5 1036 181.634 1036 185.5 L1036 195.5 C1036 199.366 1032.866 202.5 1029 202.5 L1011 202.5 C1007.134 202.5 1004 199.366 1004 195.5 L1004 185.5 C1004 181.634 1007.134 178.5 1011 178.5 Z" fill="#1d3448"/>
+        <text transform="matrix(1 0 0 1 1020 194.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8fc7f5" text-anchor="middle"><tspan x="0" y="0">05</tspan></text>
+        <text transform="matrix(1 0 0 1 1004 236.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="17" font-weight="bold" fill="#e6edf6"><tspan x="0" y="0">Playback</tspan></text>
+        <text transform="matrix(1 0 0 1 1004 260.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" fill="#8192a8"><tspan x="0" y="0">Consumes recording</tspan></text>
+        <path d="M1011 276.5 L1113 276.5 C1116.866 276.5 1120 279.634 1120 283.5 L1120 294.5 C1120 298.366 1116.866 301.5 1113 301.5 L1011 301.5 C1007.134 301.5 1004 298.366 1004 294.5 L1004 283.5 C1004 279.634 1007.134 276.5 1011 276.5 Z" fill="#1a2c3d"/>
+        <text transform="matrix(1 0 0 1 1062 293.5)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#9bc8e8" text-anchor="middle"><tspan x="0" y="0">forward / back</tspan></text>
+      </g>
+    </g>
+    <g>
+      <path d="M253 240 L279 240 M272 233 L279 240 L272 247" fill="none" stroke="#71859b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M485 240 L511 240 M504 233 L511 240 L504 247" fill="none" stroke="#71859b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M717 240 L743 240 M736 233 L743 240 L736 247" fill="none" stroke="#71859b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M949 240 L975 240 M968 233 L975 240 L968 247" fill="none" stroke="#71859b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g>
+      <path d="M78 357 L1122 357 C1129.732 357 1136 363.268 1136 371 L1136 431 C1136 438.732 1129.732 445 1122 445 L78 445 C70.268 445 64 438.732 64 431 L64 371 C64 363.268 70.268 357 78 357 Z" fill="#111d2a" stroke="#26394d"/>
+      <line x1="584" y1="375" x2="584" y2="427" fill="#000000" stroke="#2b3c50"/>
+      <g>
+        <g>
+          <circle cx="95" cy="391.788" r="6" fill="#70d7c3"/>
+          <text transform="matrix(1 0 0 1 112 395.788)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="12.5" font-weight="bold" fill="#dce7f2"><tspan x="0" y="0">Computation</tspan></text>
+          <text transform="matrix(1 0 0 1 112 415.788)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Session can build the recording incrementally, within a time budget.</tspan></text>
+        </g>
+        <g>
+          <circle cx="623" cy="391.788" r="6" fill="#b69aff"/>
+          <text transform="matrix(1 0 0 1 640 395.788)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="12.5" font-weight="bold" fill="#dce7f2"><tspan x="0" y="0">Consumption</tspan></text>
+          <text transform="matrix(1 0 0 1 640 415.788)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">A UI, CLI or exporter can consume the same completed recording.</tspan></text>
+        </g>
+      </g>
+    </g>
+    <line x1="64" y1="467" x2="1136" y2="467" fill="#000000" stroke="#263548"/>
+    <text transform="matrix(1 0 0 1 64 486)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad"><tspan x="0" y="0">ALGORITHM → STEP → OPERATION → RECORDING → PLAYBACK</tspan></text>
+    <text transform="matrix(1 0 0 1 1136 486)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad" text-anchor="end"><tspan x="0" y="0">SORTRACE · ARCHITECTURE</tspan></text>
+  </g>
+</svg>

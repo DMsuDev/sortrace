@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="723.415" viewBox="0 0 1200 723.415">
+  <defs>
+    <linearGradient id="linear-gradient-1" x1="0" y1="0" x2="639.724" y2="1061.174" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#101722"/>
+      <stop offset="1" stop-color="#0b111a"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="64" y1="48" x2="98" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67d8c2"/>
+      <stop offset="1" stop-color="#6aa8f7"/>
+    </linearGradient>
+    <filter id="filter-1" filterUnits="userSpaceOnUse" x="9.5" y="91.5" width="1181" height="602.512" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="14"/><feOffset dx="0" dy="10" result="shadow"/><feFlood flood-color="#000000" flood-opacity="0.22"/><feComposite in2="shadow" operator="in" result="paint"/><feMerge><feMergeNode in="paint"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <title>operations.svg</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M24 0 L1176 0 C1189.255 0 1200 10.228 1200 22.845 L1200 700.57 C1200 713.187 1189.255 723.415 1176 723.415 L24 723.415 C10.745 723.415 0 713.187 0 700.57 L0 22.845 C0 10.228 10.745 0 24 0 Z" fill="url(#linear-gradient-1)"/>
+    <g>
+      <path d="M900 65 C900 42.081 904.284 20.162 912.094 0 L1001.874 0 L1176 0 C1189.255 0 1200 10.745 1200 24 L1200 116.829 L1200 116.829 L1200 199.166 C1168.155 227.669 1126.101 245 1080 245 C980.589 245 900 164.411 900 65 Z" fill="#1b3650" opacity="0.1"/>
+      <path d="M985 60 C985 38.013 991.17 17.467 1001.874 0 L1176 0 C1189.255 0 1200 10.745 1200 24 L1200 116.829 C1180.213 151.572 1142.842 175 1100 175 C1036.487 175 985 123.513 985 60 Z" fill="#6bd5c1" opacity="0.035"/>
+    </g>
+    <path d="M66 48 L96 48 C97.105 48 98 48.895 98 50 L98 50 C98 51.105 97.105 52 96 52 L66 52 C64.895 52 64 51.105 64 50 L64 50 C64 48.895 64.895 48 66 48 Z" fill="url(#linear-gradient-2)"/>
+    <text transform="matrix(1 0 0 1 64 86)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="29" font-weight="bold" fill="#e8eef7" letter-spacing="-0.7"><tspan x="0" y="0">Six operations, one array</tspan></text>
+    <text transform="matrix(1 0 0 1 64 113)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" fill="#8292a8"><tspan x="0" y="0">Each operation describes one logical change in a sorting trace.</tspan></text>
+    <g>
+      <path d="M1051 45.451 L1157 45.451 C1165.284 45.451 1172 52.166 1172 60.451 L1172 60.451 C1172 68.735 1165.284 75.451 1157 75.451 L1051 75.451 C1042.716 75.451 1036 68.735 1036 60.451 L1036 60.451 C1036 52.166 1042.716 45.451 1051 45.451 Z" fill="#17283a" stroke="#29435b"/>
+      <circle cx="1052" cy="60.451" r="4" fill="#70d7c3"/>
+      <text transform="matrix(1 0 0 1 1065 64.451)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#b8c8d9" letter-spacing="0.4"><tspan x="0" y="0">STEP TYPES</tspan></text>
+    </g>
+    <g filter="url(#filter-1)">
+      <path d="M81 146 L1119 146 C1128.389 146 1136 153.008 1136 161.652 L1136 623.86 C1136 632.505 1128.389 639.512 1119 639.512 L81 639.512 C71.611 639.512 64 632.505 64 623.86 L64 161.652 C64 153.008 71.611 146 81 146 Z" fill="#131d2a" stroke="#263548"/>
+    </g>
+    <text transform="matrix(1 0 0 1 96 181)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8798ad"><tspan x="0" y="0">OPERATION</tspan></text>
+    <text transform="matrix(1 0 0 1 440 181)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8798ad"><tspan x="0" y="0">ARRAY STATE</tspan></text>
+    <text transform="matrix(1 0 0 1 936.507 181)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#8798ad"><tspan x="0" y="0">MEANING</tspan></text>
+    <line x1="96" y1="196" x2="1104" y2="196" fill="#000000" stroke="#2a3b4f"/>
+    <g>
+      <path d="M101 213 L101 213 C103.761 213 106 215.239 106 218 L106 246 C106 248.761 103.761 251 101 251 L101 251 C98.239 251 96 248.761 96 246 L96 218 C96 215.239 98.239 213 101 213 Z" fill="#e6b65f"/>
+      <text transform="matrix(1 0 0 1 120 229)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#dce6f2"><tspan x="0" y="0">Compare</tspan></text>
+      <text transform="matrix(1 0 0 1 120 246)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Compare(1, 2)</tspan></text>
+    </g>
+    <g>
+      <path d="M448 207 L488 207 C492.418 207 496 210.582 496 215 L496 241 C496 245.418 492.418 249 488 249 L448 249 C443.582 249 440 245.418 440 241 L440 215 C440 210.582 443.582 207 448 207 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 468 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      <path d="M514 207 L554 207 C558.418 207 562 210.582 562 215 L562 241 C562 245.418 558.418 249 554 249 L514 249 C509.582 249 506 245.418 506 241 L506 215 C506 210.582 509.582 207 514 207 Z" fill="#654d2d" stroke="#d9a64e"/>
+      <text transform="matrix(1 0 0 1 534 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+      <path d="M580 207 L620 207 C624.418 207 628 210.582 628 215 L628 241 C628 245.418 624.418 249 620 249 L580 249 C575.582 249 572 245.418 572 241 L572 215 C572 210.582 575.582 207 580 207 Z" fill="#654d2d" stroke="#d9a64e"/>
+      <text transform="matrix(1 0 0 1 600 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">9</tspan></text>
+      <path d="M646 207 L686 207 C690.418 207 694 210.582 694 215 L694 241 C694 245.418 690.418 249 686 249 L646 249 C641.582 249 638 245.418 638 241 L638 215 C638 210.582 641.582 207 646 207 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 666 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">4</tspan></text>
+      <path d="M712 207 L752 207 C756.418 207 760 210.582 760 215 L760 241 C760 245.418 756.418 249 752 249 L712 249 C707.582 249 704 245.418 704 241 L704 215 C704 210.582 707.582 207 712 207 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 732 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">8</tspan></text>
+      <path d="M778 207 L818 207 C822.418 207 826 210.582 826 215 L826 241 C826 245.418 822.418 249 818 249 L778 249 C773.582 249 770 245.418 770 241 L770 215 C770 210.582 773.582 207 778 207 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 798 234)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+    </g>
+    <g>
+      <text transform="matrix(1 0 0 1 936.507 228)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11.5" font-weight="bold" fill="#e6c17b"><tspan x="0" y="0">READ ONLY</tspan></text>
+      <text transform="matrix(1 0 0 1 936.507 246)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Data stays unchanged.</tspan></text>
+    </g>
+    <line x1="96" y1="268" x2="1104" y2="268" fill="#000000" stroke="#263548"/>
+    <g>
+      <path d="M101 285 L101 285 C103.761 285 106 287.239 106 290 L106 318 C106 320.761 103.761 323 101 323 L101 323 C98.239 323 96 320.761 96 318 L96 290 C96 287.239 98.239 285 101 285 Z" fill="#e77a82"/>
+      <text transform="matrix(1 0 0 1 120 301)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#dce6f2"><tspan x="0" y="0">Swap</tspan></text>
+      <text transform="matrix(1 0 0 1 120 318)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Swap(1, 2)</tspan></text>
+    </g>
+    <g>
+      <path d="M448 279 L488 279 C492.418 279 496 282.582 496 287 L496 313 C496 317.418 492.418 321 488 321 L448 321 C443.582 321 440 317.418 440 313 L440 287 C440 282.582 443.582 279 448 279 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 468 306)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      <path d="M514 279 L554 279 C558.418 279 562 282.582 562 287 L562 313 C562 317.418 558.418 321 554 321 L514 321 C509.582 321 506 317.418 506 313 L506 287 C506 282.582 509.582 279 514 279 Z" fill="#61363e" stroke="#d97780"/>
+      <text transform="matrix(1 0 0 1 534 306)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">9</tspan></text>
+      <path d="M580 279 L620 279 C624.418 279 628 282.582 628 287 L628 313 C628 317.418 624.418 321 620 321 L580 321 C575.582 321 572 317.418 572 313 L572 287 C572 282.582 575.582 279 580 279 Z" fill="#61363e" stroke="#d97780"/>
+      <text transform="matrix(1 0 0 1 600 306)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+      <path d="M646 279 L686 279 C690.418 279 694 282.582 694 287 L694 313 C694 317.418 690.418 321 686 321 L646 321 C641.582 321 638 317.418 638 313 L638 287 C638 282.582 641.582 279 646 279 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 666 306)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">4</tspan></text>
+      <path d="M712 279 L752 279 C756.418 279 760 282.582 760 287 L760 313 C760 317.418 756.418 321 752 321 L712 321 C707.582 321 704 317.418 704 313 L704 287 C704 282.582 707.582 279 712 279 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 732 306)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">8</tspan></text>
+      <path d="M778 279 L818 279 C822.418 279 826 282.582 826 287 L826 313 C826 317.418 822.418 321 818 321 L778 321 C773.582 321 770 317.418 770 313 L770 287 C770 282.582 773.582 279 778 279 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 798 306)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+    </g>
+    <g>
+      <text transform="matrix(1 0 0 1 936.507 300)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11.5" font-weight="bold" fill="#e78b92"><tspan x="0" y="0">EXCHANGE</tspan></text>
+      <text transform="matrix(1 0 0 1 936.507 318)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Two positions trade values.</tspan></text>
+    </g>
+    <line x1="96" y1="340" x2="1104" y2="340" fill="#000000" stroke="#263548"/>
+    <g>
+      <path d="M101 357 L101 357 C103.761 357 106 359.239 106 362 L106 390 C106 392.761 103.761 395 101 395 L101 395 C98.239 395 96 392.761 96 390 L96 362 C96 359.239 98.239 357 101 357 Z" fill="#e77a82"/>
+      <text transform="matrix(1 0 0 1 120 373)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#dce6f2"><tspan x="0" y="0">Overwrite</tspan></text>
+      <text transform="matrix(1 0 0 1 120 390)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Overwrite(3, 6)</tspan></text>
+    </g>
+    <g>
+      <path d="M448 351 L488 351 C492.418 351 496 354.582 496 359 L496 385 C496 389.418 492.418 393 488 393 L448 393 C443.582 393 440 389.418 440 385 L440 359 C440 354.582 443.582 351 448 351 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 468 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      <path d="M514 351 L554 351 C558.418 351 562 354.582 562 359 L562 385 C562 389.418 558.418 393 554 393 L514 393 C509.582 393 506 389.418 506 385 L506 359 C506 354.582 509.582 351 514 351 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 534 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+      <path d="M580 351 L620 351 C624.418 351 628 354.582 628 359 L628 385 C628 389.418 624.418 393 620 393 L580 393 C575.582 393 572 389.418 572 385 L572 359 C572 354.582 575.582 351 580 351 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 600 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">9</tspan></text>
+      <path d="M646 351 L686 351 C690.418 351 694 354.582 694 359 L694 385 C694 389.418 690.418 393 686 393 L646 393 C641.582 393 638 389.418 638 385 L638 359 C638 354.582 641.582 351 646 351 Z" fill="#61363e" stroke="#d97780"/>
+      <text transform="matrix(1 0 0 1 666 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">6</tspan></text>
+      <path d="M712 351 L752 351 C756.418 351 760 354.582 760 359 L760 385 C760 389.418 756.418 393 752 393 L712 393 C707.582 393 704 389.418 704 385 L704 359 C704 354.582 707.582 351 712 351 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 732 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">8</tspan></text>
+      <path d="M778 351 L818 351 C822.418 351 826 354.582 826 359 L826 385 C826 389.418 822.418 393 818 393 L778 393 C773.582 393 770 389.418 770 385 L770 359 C770 354.582 773.582 351 778 351 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 798 378)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+      <line x1="666" y1="341" x2="666" y2="349" fill="#000000" stroke="#e78b92" stroke-width="1.5"/>
+      <text transform="matrix(1 0 0 1 666.136 338)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="9.5" font-weight="bold" fill="#e78b92" text-anchor="middle"><tspan x="0" y="0">NEW VALUE</tspan></text>
+    </g>
+    <g>
+      <text transform="matrix(1 0 0 1 936.507 372)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11.5" font-weight="bold" fill="#e78b92"><tspan x="0" y="0">REPLACE</tspan></text>
+      <text transform="matrix(1 0 0 1 936.507 390)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">One position receives a value.</tspan></text>
+    </g>
+    <line x1="96" y1="412" x2="1104" y2="412" fill="#000000" stroke="#263548"/>
+    <g>
+      <path d="M101 429 L101 429 C103.761 429 106 431.239 106 434 L106 462 C106 464.761 103.761 467 101 467 L101 467 C98.239 467 96 464.761 96 462 L96 434 C96 431.239 98.239 429 101 429 Z" fill="#a98bea"/>
+      <text transform="matrix(1 0 0 1 120 445)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#dce6f2"><tspan x="0" y="0">MarkSet</tspan></text>
+      <text transform="matrix(1 0 0 1 120 462)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">MarkSet(Pivot, 2)</tspan></text>
+    </g>
+    <g>
+      <path d="M448 423 L488 423 C492.418 423 496 426.582 496 431 L496 457 C496 461.418 492.418 465 488 465 L448 465 C443.582 465 440 461.418 440 457 L440 431 C440 426.582 443.582 423 448 423 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 468 450)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      <path d="M514 423 L554 423 C558.418 423 562 426.582 562 431 L562 457 C562 461.418 558.418 465 554 465 L514 465 C509.582 465 506 461.418 506 457 L506 431 C506 426.582 509.582 423 514 423 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 534 450)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+      <path d="M580 423 L620 423 C624.418 423 628 426.582 628 431 L628 457 C628 461.418 624.418 465 620 465 L580 465 C575.582 465 572 461.418 572 457 L572 431 C572 426.582 575.582 423 580 423 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 600 450)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">9</tspan></text>
+      <path d="M646 423 L686 423 C690.418 423 694 426.582 694 431 L694 457 C694 461.418 690.418 465 686 465 L646 465 C641.582 465 638 461.418 638 457 L638 431 C638 426.582 641.582 423 646 423 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 666 450)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">4</tspan></text>
+      <path d="M712 423 L752 423 C756.418 423 760 426.582 760 431 L760 457 C760 461.418 756.418 465 752 465 L712 465 C707.582 465 704 461.418 704 457 L704 431 C704 426.582 707.582 423 712 423 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 732 450)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">8</tspan></text>
+      <path d="M778 423 L818 423 C822.418 423 826 426.582 826 431 L826 457 C826 461.418 822.418 465 818 465 L778 465 C773.582 465 770 461.418 770 457 L770 431 C770 426.582 773.582 423 778 423 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 798 450)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+      <path d="M579 419 L621 419 C627.075 419 632 423.925 632 430 L632 458 C632 464.075 627.075 469 621 469 L579 469 C572.925 469 568 464.075 568 458 L568 430 C568 423.925 572.925 419 579 419 Z" fill="none" stroke="#b69aff" stroke-width="2.5"/>
+      <path d="M585.5 396 L618.5 396 C623.194 396 627 399.806 627 404.5 L627 404.5 C627 409.194 623.194 413 618.5 413 L585.5 413 C580.806 413 577 409.194 577 404.5 L577 404.5 C577 399.806 580.806 396 585.5 396 Z" fill="#2b2342" stroke="#5c4a83"/>
+      <text transform="matrix(1 0 0 1 602 408)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="9" font-weight="bold" fill="#c8b5ff" text-anchor="middle"><tspan x="0" y="0">PIVOT</tspan></text>
+    </g>
+    <g>
+      <text transform="matrix(1 0 0 1 936.507 444)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11.5" font-weight="bold" fill="#b69aff"><tspan x="0" y="0">ATTACH MARK</tspan></text>
+      <text transform="matrix(1 0 0 1 936.507 462)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Mark follows its element.</tspan></text>
+    </g>
+    <line x1="96" y1="484" x2="1104" y2="484" fill="#000000" stroke="#263548"/>
+    <g>
+      <path d="M101 501 L101 501 C103.761 501 106 503.239 106 506 L106 534 C106 536.761 103.761 539 101 539 L101 539 C98.239 539 96 536.761 96 534 L96 506 C96 503.239 98.239 501 101 501 Z" fill="#a98bea"/>
+      <text transform="matrix(1 0 0 1 120 517)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#dce6f2"><tspan x="0" y="0">MarkClear</tspan></text>
+      <text transform="matrix(1 0 0 1 120 534)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">MarkClear(Pivot)</tspan></text>
+    </g>
+    <g>
+      <path d="M448 495 L488 495 C492.418 495 496 498.582 496 503 L496 529 C496 533.418 492.418 537 488 537 L448 537 C443.582 537 440 533.418 440 529 L440 503 C440 498.582 443.582 495 448 495 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 468 522)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      <path d="M514 495 L554 495 C558.418 495 562 498.582 562 503 L562 529 C562 533.418 558.418 537 554 537 L514 537 C509.582 537 506 533.418 506 529 L506 503 C506 498.582 509.582 495 514 495 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 534 522)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+      <path d="M580 495 L620 495 C624.418 495 628 498.582 628 503 L628 529 C628 533.418 624.418 537 620 537 L580 537 C575.582 537 572 533.418 572 529 L572 503 C572 498.582 575.582 495 580 495 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 600 522)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">9</tspan></text>
+      <path d="M646 495 L686 495 C690.418 495 694 498.582 694 503 L694 529 C694 533.418 690.418 537 686 537 L646 537 C641.582 537 638 533.418 638 529 L638 503 C638 498.582 641.582 495 646 495 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 666 522)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">4</tspan></text>
+      <path d="M712 495 L752 495 C756.418 495 760 498.582 760 503 L760 529 C760 533.418 756.418 537 752 537 L712 537 C707.582 537 704 533.418 704 529 L704 503 C704 498.582 707.582 495 712 495 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 732 522)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">8</tspan></text>
+      <path d="M778 495 L818 495 C822.418 495 826 498.582 826 503 L826 529 C826 533.418 822.418 537 818 537 L778 537 C773.582 537 770 533.418 770 529 L770 503 C770 498.582 773.582 495 778 495 Z" fill="#263548" stroke="#34465b"/>
+      <text transform="matrix(1 0 0 1 798 522)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+      <path d="M579 491 L621 491 C627.075 491 632 495.925 632 502 L632 530 C632 536.075 627.075 541 621 541 L579 541 C572.925 541 568 536.075 568 530 L568 502 C568 495.925 572.925 491 579 491 Z" fill="none" stroke="#b69aff" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.45"/>
+      <path d="M583 503 L617 529 M617 503 L583 529" fill="#000000" stroke="#b69aff" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g>
+      <text transform="matrix(1 0 0 1 936.507 516)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11.5" font-weight="bold" fill="#b69aff"><tspan x="0" y="0">REMOVE MARK</tspan></text>
+      <text transform="matrix(1 0 0 1 936.507 534)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Clears the matching MarkId.</tspan></text>
+    </g>
+    <line x1="96" y1="556" x2="1104" y2="556" fill="#000000" stroke="#263548"/>
+    <g>
+      <path d="M101 573 L101 573 C103.761 573 106 575.239 106 578 L106 606 C106 608.761 103.761 611 101 611 L101 611 C98.239 611 96 608.761 96 606 L96 578 C96 575.239 98.239 573 101 573 Z" fill="#70c99a"/>
+      <text transform="matrix(1 0 0 1 120 589)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#dce6f2"><tspan x="0" y="0">Sorted</tspan></text>
+      <text transform="matrix(1 0 0 1 120 606)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Completion</tspan></text>
+    </g>
+    <g>
+      <path d="M448 567 L488 567 C492.418 567 496 570.582 496 575 L496 601 C496 605.418 492.418 609 488 609 L448 609 C443.582 609 440 605.418 440 601 L440 575 C440 570.582 443.582 567 448 567 Z" fill="#214b40" stroke="#4d9b7b"/>
+      <text transform="matrix(1 0 0 1 468 594)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+      <path d="M514 567 L554 567 C558.418 567 562 570.582 562 575 L562 601 C562 605.418 558.418 609 554 609 L514 609 C509.582 609 506 605.418 506 601 L506 575 C506 570.582 509.582 567 514 567 Z" fill="#214b40" stroke="#4d9b7b"/>
+      <text transform="matrix(1 0 0 1 534 594)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+      <path d="M580 567 L620 567 C624.418 567 628 570.582 628 575 L628 601 C628 605.418 624.418 609 620 609 L580 609 C575.582 609 572 605.418 572 601 L572 575 C572 570.582 575.582 567 580 567 Z" fill="#214b40" stroke="#4d9b7b"/>
+      <text transform="matrix(1 0 0 1 600 594)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">4</tspan></text>
+      <path d="M646 567 L686 567 C690.418 567 694 570.582 694 575 L694 601 C694 605.418 690.418 609 686 609 L646 609 C641.582 609 638 605.418 638 601 L638 575 C638 570.582 641.582 567 646 567 Z" fill="#214b40" stroke="#4d9b7b"/>
+      <text transform="matrix(1 0 0 1 666 594)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">7</tspan></text>
+      <path d="M712 567 L752 567 C756.418 567 760 570.582 760 575 L760 601 C760 605.418 756.418 609 752 609 L712 609 C707.582 609 704 605.418 704 601 L704 575 C704 570.582 707.582 567 712 567 Z" fill="#214b40" stroke="#4d9b7b"/>
+      <text transform="matrix(1 0 0 1 732 594)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">8</tspan></text>
+      <path d="M778 567 L818 567 C822.418 567 826 570.582 826 575 L826 601 C826 605.418 822.418 609 818 609 L778 609 C773.582 609 770 605.418 770 601 L770 575 C770 570.582 773.582 567 778 567 Z" fill="#214b40" stroke="#4d9b7b"/>
+      <text transform="matrix(1 0 0 1 798 594)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="15" font-weight="bold" fill="#edf3fa" text-anchor="middle"><tspan x="0" y="0">9</tspan></text>
+    </g>
+    <g>
+      <text transform="matrix(1 0 0 1 936.507 588)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="11.5" font-weight="bold" fill="#79d1a5"><tspan x="0" y="0">FINISHED</tspan></text>
+      <text transform="matrix(1 0 0 1 936.507 606)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10.5" fill="#8fa1b7"><tspan x="0" y="0">Emitted once, at the end.</tspan></text>
+    </g>
+    <g>
+      <line x1="64" y1="669.376" x2="1136" y2="669.376" fill="#000000" stroke="#263548"/>
+      <g>
+        <circle cx="70" cy="693.376" r="4" fill="#e6b65f"/>
+        <text transform="matrix(1 0 0 1 81 697.376)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad"><tspan x="0" y="0">Compare</tspan></text>
+        <circle cx="158" cy="693.376" r="4" fill="#e77a82"/>
+        <text transform="matrix(1 0 0 1 169 697.376)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad"><tspan x="0" y="0">Mutation</tspan></text>
+        <circle cx="254" cy="693.376" r="4" fill="#b69aff"/>
+        <text transform="matrix(1 0 0 1 265 697.376)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad"><tspan x="0" y="0">Marks</tspan></text>
+        <circle cx="331" cy="693.376" r="4" fill="#70c99a"/>
+        <text transform="matrix(1 0 0 1 342 697.376)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad"><tspan x="0" y="0">Completion</tspan></text>
+      </g>
+      <text transform="matrix(1 0 0 1 1136 697.376)" x="0" y="0" xml:space="preserve" font-family="Inter, sans-serif" font-size="10" fill="#8798ad" text-anchor="end"><tspan x="0" y="0">SORTRACE · OPERATIONS</tspan></text>
+    </g>
+  </g>
+</svg>
