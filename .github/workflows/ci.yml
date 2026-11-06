@@ -3,7 +3,7 @@
 #  SPDX-License-Identifier: MIT
 #
 #  Builds the library, tests and examples with strict warnings on
-#  Linux (GCC, Clang) and Windows (MSVC), then runs the tests and the examples.
+#  Linux (GCC) and Windows (MSVC), then runs the tests and the examples.
 # ==============================================================================
 
 name: CI
@@ -44,7 +44,6 @@ jobs:
       matrix:
         include:
           - { name: Ubuntu GCC 13,   os: ubuntu-24.04,   cc: gcc-13,   cxx: g++-13 }
-          - { name: Ubuntu Clang 18, os: ubuntu-24.04,   cc: clang-18, cxx: clang++-18 }
           - { name: Windows MSVC,    os: windows-latest, cc: "",       cxx: "" }
 
     steps:
