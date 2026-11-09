@@ -1,23 +1,21 @@
-# Extending sortrace
+# Extending Sortrace
 
-This guide covers three ways to build on `sortrace`: register a sorting algorithm, annotate its work with marks, or render a playback in your application.
+There are two ways to build on Sortrace: add a sorting algorithm, or render a playback in your application. This guide covers both. How recordings work is in [Architecture](ARCHITECTURE.md), and the optional annotations algorithms can emit are in [Marks](MARKS.md).
 
-- [Extending sortrace](#extending-sortrace)
+- [Extending Sortrace](#extending-sortrace)
   - [Add a sorting algorithm](#add-a-sorting-algorithm)
     - [1. Write the algorithm](#1-write-the-algorithm)
     - [2. Register it](#2-register-it)
     - [3. Create it](#3-create-it)
   - [Rules for algorithms](#rules-for-algorithms)
     - [Available steps](#available-steps)
-    - [How step statistics are counted](#how-step-statistics-are-counted)
-  - [Use marks](#use-marks)
   - [Test an algorithm](#test-an-algorithm)
   - [Troubleshooting](#troubleshooting)
   - [Create a visualization](#create-a-visualization)
 
 ## Add a sorting algorithm
 
-The example adds **Gnome Sort** to the built-in algorithm list. It involves three steps.
+The example adds **Gnome Sort** to the built-in algorithm list. It takes three steps.
 
 ### 1. Write the algorithm
 
@@ -68,7 +66,7 @@ In a class template, refer to base-class members with `this->`. Use `this->less(
 
 ### 2. Register it
 
-In `include/sortrace/algorithms/registry.hpp`, add the enumerator **before `Count`** and a corresponding entry in `kAlgorithms`, in the same order:
+In `include/sortrace/algorithms/registry.hpp`, add the enumerator **before `Count`** and a matching entry in `kAlgorithms`, in the same order:
 
 ```cpp
 enum class AlgorithmType
@@ -97,12 +95,12 @@ In `include/sortrace/algorithms/factory.hpp`, include the new header and add a `
 case AlgorithmType::GnomeSort: return std::make_unique<GnomeSort<T>>(std::move(less));
 ```
 
-With the registry and factory updated, the algorithm is available through `getAvailableAlgorithms()` and `parseAlgorithm("gnome")`. The shared algorithm tests exercise registered algorithms automatically; add a dedicated test for behavior unique to yours.
+The algorithm is now available through `getAvailableAlgorithms()` and `parseAlgorithm("gnome")`, and the shared test suite covers it automatically.
 
 ## Rules for algorithms
 
 1. **Change `m_Data` only through yielded steps.** Reading is fine; writing directly bypasses recording and makes replay incorrect.
-2. **Yield a `compare` before each comparison that affects a decision.** Otherwise the statistics undercount comparisons.
+2. **Yield a `compare` before each comparison that affects a decision.** Otherwise the [statistics](ARCHITECTURE.md#statistics) undercount comparisons.
 3. **A yielded step is applied before the coroutine resumes.** After a `co_yield` returns, `m_Data` reflects that step.
 4. **Do not emit `Sorted`.** `GeneratorSort` emits it exactly once when the algorithm finishes, including for empty input.
 5. **Handle empty and single-element inputs.** In particular, avoid unsigned underflow from expressions such as `n - 1`.
@@ -111,48 +109,20 @@ With the registry and factory updated, the algorithm is available through `getAv
 
 ### Available steps
 
-| Step                  | Changes `m_Data`? | Effect                                                               |
-| --------------------- | :---------------: | -------------------------------------------------------------------- |
-| `S::compare(i, j)`    |        No         | Compares values in `m_Data`.                                         |
-| `S::compareAux(i, j)` |        No         | Compares values in `m_Aux`, the auxiliary buffer.                    |
-| `S::swap(i, j)`       |        Yes        | Exchanges two values in `m_Data`.                                    |
-| `S::overwrite(i, v)`  |        Yes        | Writes a value to `m_Data`; the previous value is recorded for undo. |
-| `S::mark(id, i)`      |        No         | Sets or moves a mark to an element.                                  |
-| `S::clearMark(id)`    |        No         | Removes a mark.                                                      |
+| Step                  | Changes `m_Data`? | Effect                                                                                      |
+| :-------------------- | :---------------: | :------------------------------------------------------------------------------------------ |
+| `S::compare(i, j)`    |        No         | Compares values in `m_Data`.                                                                |
+| `S::compareAux(i, j)` |        No         | Compares values in `m_Aux`, the auxiliary buffer.                                           |
+| `S::swap(i, j)`       |        Yes        | Exchanges two values in `m_Data`.                                                           |
+| `S::overwrite(i, v)`  |        Yes        | Writes a value to `m_Data`; the previous value is recorded for undo.                        |
+| `S::mark(id, i)`      |        No         | Sets or moves a mark to an element. See [Marks](MARKS.md#emitting-marks-from-an-algorithm). |
+| `S::clearMark(id)`    |        No         | Removes a mark.                                                                             |
 
 Merge-style algorithms often need to write values back from scratch space. `m_Aux` starts as a copy of `m_Data`; you can update it with ordinary C++, then record writes to `m_Data` with `overwrite`. Changes to `m_Aux` are not recorded as playback steps.
 
-### How step statistics are counted
-
-| Step                     | Comparisons | Swaps | Reads | Writes | Operations |
-| ------------------------ | :---------: | :---: | :---: | :----: | :--------: |
-| `compare` / `compareAux` |     +1      |   —   |  +2   |   —    |     +1     |
-| `swap`                   |      —      |  +1   |  +2   |   +2   |     +1     |
-| `overwrite`              |      —      |   —   |  +1   |   +1   |     +1     |
-| `mark` / `clearMark`     |      —      |   —   |   —   |   —    |     +1     |
-
-These are the recorder's counts per step; ordinary reads, writes to `m_Aux`, and local computation are not counted. Early exits (for example, stopping after a pass without swaps) are fine, but affect the totals.
-
-## Use marks
-
-Yield `S::mark(id, i)` to point a mark at an element and `S::clearMark(id)` when it stops applying:
-
-```cpp
-co_yield S::mark(MarkRole::Pivot, high);
-// ... partition, compare against it ...
-co_yield S::clearMark(MarkRole::Pivot);
-```
-
-Two rules matter when writing an algorithm:
-
-- **Set a mark once its target element is in place.** Quick Sort, for example, moves its median-of-three pivot to `high` before marking it.
-- **Clear it when it no longer applies.** Otherwise it stays active until the playback is stopped.
-
-Roles, custom IDs, how marks follow swaps and overwrites, and the rest of the behavior are in [Marks](MARKS.md). The renderer decides whether and how to display them.
-
 ## Test an algorithm
 
-`tests/algorithms_test.cpp` runs every registered algorithm on empty, single-element, sorted, reversed, duplicate, and mixed inputs. It checks that each algorithm:
+`tests/algorithms_test.cpp` runs every registered algorithm on empty, single-element, sorted, reversed, duplicate and mixed inputs. It checks that each algorithm:
 
 - sorts and keeps the same elements, with the default order and with `std::greater`, on `int` and `std::string`,
 - ends with exactly one `Sorted` operation,
@@ -161,7 +131,7 @@ Roles, custom IDs, how marks follow swaps and overwrites, and the rest of the be
 - keeps marks attached to their elements and clears them,
 - reports a slot as settled only when it holds its final value.
 
-The common suite covers newly registered algorithms automatically. Add a dedicated test for behavior specific to your algorithm, such as an expected comparison count for a known input.
+A newly registered algorithm is covered automatically. Add a dedicated test only for behavior specific to yours, such as an expected comparison count for a known input.
 
 ## Troubleshooting
 
@@ -169,7 +139,7 @@ The common suite covers newly registered algorithms automatically. Add a dedicat
 <summary>Common symptoms and likely causes</summary>
 
 | Symptom                                        | Likely cause                                                                           |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------- |
+| :--------------------------------------------- | :------------------------------------------------------------------------------------- |
 | `kAlgorithms must list every AlgorithmType...` | The enum and registry entries are missing or out of order.                             |
 | A `-Wswitch` warning in `factory.hpp`          | The factory case for the new algorithm is missing.                                     |
 | `use of undeclared identifier 'm_Data'`        | A base-class member needs the `this->` prefix.                                         |
@@ -184,7 +154,7 @@ The common suite covers newly registered algorithms automatically. Add a dedicat
 
 ## Create a visualization
 
-You do not need to extend the library to create a visualization. Include `sortrace/replay/playback.hpp` and read a `Playback`; your application decides how to present the data and operations.
+You do not need to extend the library to visualize a run. Include `sortrace/replay/playback.hpp` and read a `Playback`; your application decides how to present the data and operations. The inputs a renderer has are listed in [Architecture](ARCHITECTURE.md#recording-and-playback).
 
 ```cpp
 void drawHeatmap(const sortrace::Playback<double>& playback, Colormap map)
@@ -202,8 +172,8 @@ void drawHeatmap(const sortrace::Playback<double>& playback, Colormap map)
 ```
 
 - Use `isSettled(slot)` for a "finished" style; it is exact during forward and backward playback.
-- Use `getCurrentOperation()` to animate the next operation.
+- Use `getCurrentOperation()` to animate only what is about to change, instead of comparing whole arrays.
 - Keep animation state (such as easing and positions) in your app; the library only knows the recorded data.
-- For custom value types, use `Recording<MyStruct>` with a `Less<MyStruct>` comparator, then map values to whatever makes sense for your renderer.
+- For custom value types, use `Recording<MyStruct>` with a `Less<MyStruct>` comparator, then map values to whatever suits your renderer.
 
-Bars, heatmaps, terminal output, sound, and other representations are all application choices. They are examples, not built-in visualization modes or an exhaustive list.
+Runnable renderers live in the [examples](../examples/README.md): bars, a heatmap, and both drawn from one shared recording.

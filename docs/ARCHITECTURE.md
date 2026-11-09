@@ -1,6 +1,6 @@
 # Architecture
 
-`sortrace` separates **computing** a sort from **showing** it. This page walks through the pipeline, the guarantees, and the freedom a recording gives its renderer.
+Sortrace separates **computing** a sort from **showing** it. This page covers the pipeline, the two ways of running an algorithm, how statistics are counted, and the guarantees a recording gives its renderer.
 
 - [Architecture](#architecture)
   - [The pipeline](#the-pipeline)
@@ -8,7 +8,7 @@
   - [Marks](#marks)
   - [Recording and Playback](#recording-and-playback)
   - [Execution](#execution)
-  - [One recording, many possibilities](#one-recording-many-possibilities)
+  - [Statistics](#statistics)
   - [Guarantees](#guarantees)
   - [Errors and logging](#errors-and-logging)
 
@@ -29,7 +29,7 @@ The algorithm never runs while you watch. That is what makes stepping backward, 
 ## Operations
 
 <div align="center">
-  <img src="images/operations.svg" alt="Compare, Swap, Overwrite, MarkSet, MarkClear and Sorted drawn on an array" width="75%">
+  <img src="images/operations.svg" alt="Compare, Swap, Overwrite, MarkSet, MarkClear and Sorted drawn on an array" width="85%">
 </div>
 
 An operation records one event in the run:
@@ -40,24 +40,19 @@ An operation records one event in the run:
 - **`MarkSet`** points a mark at `indexA` and stores the value there. **`MarkClear`** removes that mark.
 - **`Sorted`** signals the end of the run.
 
-Fields that do not apply to an operation use `-1` for indices and a default value for values. Mark operations carry a `MarkId`. Because operations retain the values they touch, playback can undo each operation in O(1).
+Fields that do not apply to an operation use `-1` for indices and a default value for values. Mark operations also carry a `MarkId`. Because operations retain the values they touch, playback can undo each one in O(1).
 
 ## Marks
 
-<div align="center">
-  <img src="images/marks.svg" alt="A Pivot mark staying on the same element after a swap" width="65%">
-</div>
+Marks optionally identify elements of interest, such as pivots or current minima. Playback tracks them through swaps in either direction; an overwrite leaves a mark at its existing index. Renderers may ignore marks.
 
-A mark is an optional annotation: it says that an element has a particular meaning to the algorithm right now. It is attached to the **element**, so its index follows that element through swaps, forward and backward.
-
-The library names a few common roles (`Pivot`, `Minimum`, `Root`, `Active`) and lets you define custom IDs with `MarkId::custom_id(id)`. They are conventions, not rules: an algorithm can use no marks, and a renderer can ignore them. Several marks can point to the same element, while each ID points to at most one element at a time. See [Marks](MARKS.md) for the roles and their lifecycle.
-A mark's visual appearance is entirely up to the renderer. The same mark could be a colored bar, a ring, a label, or something else; `sortrace` does not prescribe a style.
+See [Marks](MARKS.md) for roles, identity, the lifecycle and the full behavior reference.
 
 ## Recording and Playback
 
 A `Recording<T>` holds the algorithm name, the original input, the ordered operations, and the run's statistics. `record()` returns a recording by value, which the caller owns. For sharing, `recordShared()` and a completed `Session` provide a `std::shared_ptr<const Recording<T>>`; the `const` handle prevents changes to the recorded run.
 
-`Playback::load()` accepts either that shared pointer or a recording by value, for example `playback.load(record<int>(type, data))`. Each playback keeps its own position, visible data, and marks. So several playbacks can share one recording while advancing independently:
+`Playback::load()` accepts either that shared pointer or a recording by value, for example `playback.load(record<int>(type, data))`. Each playback keeps its own position, visible data and marks, so several playbacks can share one recording while advancing independently:
 
 ```cpp
 auto run = recordShared<int>(AlgorithmType::QuickSort, data);
@@ -71,25 +66,27 @@ if (!barsLoaded || !heatmapLoaded)
 
 A runnable version is [shared_views](../examples/basic/shared_views.cpp).
 
-`Playback<T>` exposes the current state and the information needed to render it:
+`Playback<T>` exposes everything a renderer needs:
 
-- **Current data:** `getData()`
-- **Current event:** `getCurrentOperation()`
-- **Marks:** `getMarks()`, `getMarkIndex(id)`
-- **Settled slots:** `isSettled(slot)`
-- **Progress:** `getProgress()`, `getCurrentOperationIndex()`
+| Need          | Call                                          |
+| :------------ | :-------------------------------------------- |
+| Current data  | `getData()`                                   |
+| Current event | `getCurrentOperation()`                       |
+| Marks         | `getMarks()`, `getMarkIndex(id)`              |
+| Settled slots | `isSettled(slot)`                             |
+| Progress      | `getProgress()`, `getCurrentOperationIndex()` |
 
 Time is optional. A CLI calls `stepForward()` in a loop. A UI calls `update(deltaSeconds)` each frame, with `setDelayMs()` for the speed and `enableDelay(false)` to finish instantly.
 
-States: `Stopped` (first operation, data untouched), `Playing`, `Paused`, `Finished`. `play()` starts from Stopped, resumes from Paused and restarts from Finished.
+A playback is always `Stopped` (first operation, data untouched), `Playing`, `Paused` or `Finished`. `play()` starts from Stopped, resumes from Paused and restarts from Finished.
 
 ## Execution
 
-Both `record()` and `Session<T>` execute an algorithm and produce a `Recording<T>`. Choose based on whether running the algorithm should block the caller:
+Both `record()` and `Session<T>` execute an algorithm and produce a `Recording<T>`. Choose based on whether running the algorithm should block the caller.
 
-**Use `record()`** for CLI tools, tests, or other cases where running to completion in one call is appropriate.
+**Use `record()`** for CLI tools, tests, or any case where running to completion in one call is fine.
 
-**Use `Session<T>`** when execution needs to stay responsive, such as in a UI or when comparing runs. It computes in time slices and resumes between calls:
+**Use `Session<T>`** when execution must stay responsive, such as in a UI or when comparing runs. It computes in time slices and resumes between calls:
 
 ```cpp
 auto progress = session.compute(std::chrono::microseconds{ 2500 }); // call again while InProgress
@@ -98,29 +95,21 @@ auto progress = session.compute(std::chrono::microseconds{ 2500 }); // call agai
 See [session_budget](../examples/basic/session_budget.cpp) for the full loop.
 
 - A budget limits work approximately: elapsed time is checked every 256 algorithm steps, so a call can overshoot. A zero budget runs to completion and is refused above `SessionOptions::blockingLimit`, because O(n²) algorithms can produce millions of operations.
-- Each session keeps its own run state, so many sessions can run side by side (comparison views).
-- `getSessionId()` gives each session a stable, unique identity.
+- Each session keeps its own run state, so many sessions can run side by side (comparison views), and `getSessionId()` gives each one a stable, unique identity.
 - When complete, `getRecording()` hands out the shared recording. A `Session` knows nothing about playback.
 
-## One recording, many possibilities
+## Statistics
 
-<div align="center">
-  <img src="images/views.svg" alt="The same data and pivot drawn as bars, a heatmap and a circle" width="80%">
-</div>
+The Recorder counts as a byproduct of building each operation, so every algorithm is measured the same way:
 
-The library speaks about **positions in a linear array**, **values**, and recorded operations. It does not provide or restrict renderers. For example, a renderer might map:
+| Step                     | Comparisons | Swaps | Reads | Writes | Operations |
+| :----------------------- | :---------: | :---: | :---: | :----: | :--------: |
+| `compare` / `compareAux` |     +1      |   —   |  +2   |   —    |     +1     |
+| `swap`                   |      —      |  +1   |  +2   |   +2   |     +1     |
+| `overwrite`              |      —      |   —   |  +1   |   +1   |     +1     |
+| `mark` / `clearMark`     |      —      |   —   |   —   |   —    |     +1     |
 
-- **Bars:** position to horizontal location, value to height, and marks to color.
-- **Heatmap:** position to a cell, value to a color, and marks to a border.
-- **Circle:** position to an angle, value to color or radius, and marks to a ring.
-- **Terminal:** position to a column, value to text, and marks to an arrow.
-
-> [!IMPORTANT]
-> These are only examples—not built-in modes, an exhaustive list, or requirements. `sortrace` puts no limit on how an application chooses to represent a recording.
-
-A renderer can create a different layout, sound, export, or any other representation that fits its application. It also decides whether and how to show marks.
-
-To animate only what changed, use `getCurrentOperation()`: it names the indices and values involved, so a renderer never has to diff whole arrays.
+Ordinary reads, writes to the auxiliary buffer and local computation are not counted, and early exits (such as stopping after a pass without swaps) change the totals. Compute time covers only the algorithm's stepping, never playback. Statistics are available while a `Session` is still running and are final once its recording is complete.
 
 ## Guarantees
 
@@ -138,7 +127,7 @@ Expected failures are returned as values rather than thrown as exceptions:
 - `Session::compute()` returns `std::expected<Progress, ComputeError>`.
 - `Playback::load()` returns `std::expected<void, PlaybackError>`.
 
-`ComputeError` can be `NoAlgorithm`, `NoData`, `TooLargeForBlocking`, or `AlgorithmThrew`. `PlaybackError` can be `EmptyRecording` or `InvalidOperation`.
+`ComputeError` can be `NoAlgorithm`, `NoData`, `TooLargeForBlocking` or `AlgorithmThrew`. `PlaybackError` can be `EmptyRecording` or `InvalidOperation`.
 
 The library is **silent by default** and never asserts on missing setup. To see its diagnostics, give any `Session` or `Playback` a sink:
 
@@ -149,3 +138,7 @@ session.setLogSink([](sortrace::LogLevel level, std::string_view message) {
 ```
 
 Messages are formatted only when a sink is set.
+
+---
+
+Next: [Extending](EXTENDING.md) to add an algorithm or a renderer, or back to the [README](../README.md).

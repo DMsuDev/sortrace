@@ -2,7 +2,7 @@
 
 _Name an element. Follow it through the run._
 
-A **mark** is an optional label that an algorithm attaches to an element while that element means something: the pivot of a partition, the smallest value found so far, the edges of a range. Marks never change the data or the sort. They exist so that a renderer can answer one question: _"which elements is the algorithm paying attention to right now?"_
+A **mark** is an optional label that an algorithm attaches to an element while that element means something: the pivot of a partition, the smallest value found so far, the end of a range. Marks never change the data or the sort. They exist so a renderer can answer one question: _"which elements is the algorithm paying attention to right now?"_
 
 - [Marks](#marks)
   - [The idea in 60 seconds](#the-idea-in-60-seconds)
@@ -15,10 +15,8 @@ A **mark** is an optional label that an algorithm attaches to an element while t
     - [1. Give your ids names](#1-give-your-ids-names)
     - [2. Emit them from the algorithm](#2-emit-them-from-the-algorithm)
     - [3. Style them in the renderer](#3-style-them-in-the-renderer)
-    - [Why custom ids matter to users](#why-custom-ids-matter-to-users)
   - [Reading marks in a renderer](#reading-marks-in-a-renderer)
   - [Behavior reference](#behavior-reference)
-    - [What marks cost](#what-marks-cost)
 
 ## The idea in 60 seconds
 
@@ -40,7 +38,7 @@ That is the whole contract. The library **records** marks and keeps them correct
 
 ## Anatomy of a mark
 
-A mark is identified by a `MarkId` and points at one element:
+A mark is identified by a `MarkId` and points at one element at a time:
 
 ```cpp
 struct MarkId
@@ -55,7 +53,7 @@ struct MarkId
 `MarkRole` offers a few names for common situations, plus an escape hatch for everything else.
 
 | Role      | Intended meaning                             | Used by the built-in algorithms |
-| --------- | -------------------------------------------- | ------------------------------- |
+| :-------- | :------------------------------------------- | :------------------------------ |
 | `Pivot`   | The element a partition is built around.     | Quick Sort                      |
 | `Minimum` | The smallest element found so far.           | Selection Sort                  |
 | `Root`    | A heap root being sifted.                    | —                               |
@@ -70,7 +68,7 @@ struct MarkId
 Two marks are the **same mark** when both `role` and `custom` are equal.
 
 | `MarkId`                   | Meaning                                            |
-| -------------------------- | -------------------------------------------------- |
+| :------------------------- | :------------------------------------------------- |
 | `MarkRole::Pivot`          | The pivot mark. Converts implicitly to a `MarkId`. |
 | `MarkId::custom_id(7)`     | Custom mark number 7.                              |
 | `MarkId::custom_id(8)`     | A different custom mark.                           |
@@ -82,24 +80,18 @@ Custom numbers never collide with built-in roles, and different roles never coll
 
 A mark exists from the moment its `MarkSet` operation is applied until a `MarkClear` for the same id is applied.
 
-```text
- operation         pivot mark               marks seen by the renderer
- ─────────         ──────────               ──────────────────────────
- mark(Pivot, 4)    set → element at 4       { Pivot → 4 }
- compare(0, 4)     unchanged                { Pivot → 4 }
- swap(4, 6)        follows its element      { Pivot → 6 }
- mark(Pivot, 2)    moved to element at 2    { Pivot → 2 }
- clearMark(Pivot)  removed                  { }
-```
+<div align="center">
+  <img src="images/marks.svg" alt="Pivot mark lifecycle: set, compare, swap, reassign and clear" width="90%">
+</div>
 
 Stepping **backward** replays this in reverse: each mark returns to exactly where it was before the operation being undone.
 
 ## Emitting marks from an algorithm
 
-Marks are steps like any other. Yield them from `run()` through `Step`.
+Marks are steps like any other: yield them from `run()` (see [Extending](EXTENDING.md#add-a-sorting-algorithm) for the full algorithm skeleton).
 
 | Step               | Effect                                                                              |
-| ------------------ | ----------------------------------------------------------------------------------- |
+| :----------------- | :---------------------------------------------------------------------------------- |
 | `S::mark(id, i)`   | Points `id` at the element currently at index `i`. Moves it if `id` is already set. |
 | `S::clearMark(id)` | Removes `id`. Harmless if it is not set.                                            |
 
@@ -134,12 +126,14 @@ StepGenerator<T> run() override
 }
 ```
 
-> [!TIP]
-> Mark an element **after** it is in place. Quick Sort first moves its median-of-three pivot to `high`, and only then calls `S::mark(MarkRole::Pivot, high)`.
+Two habits keep marks tidy:
+
+- **Mark an element after it is in place.** Quick Sort moves its median-of-three pivot to `high` first, and only then calls `S::mark(MarkRole::Pivot, high)`.
+- **Clear a mark when it stops applying.** Marks are not cleared automatically when the run ends.
 
 ## Custom marks
 
-Use a custom mark when the built-in roles do not fit, or when you need **several independent marks at once**. Because every id points at only one element, two things of the same kind need two ids.
+Use a custom mark when the built-in roles do not fit, or when you need **several independent marks of the same kind**. Because each id points at only one element, two things of the same kind need two ids.
 
 ### 1. Give your ids names
 
@@ -154,17 +148,17 @@ Keeping them in one place avoids magic numbers and lets the algorithm and the re
 
 ### 2. Emit them from the algorithm
 
-A binary-search-style scan marking both ends of the range still under consideration:
+A two-pointer scan, as in a Hoare-style partition, marks both ends as they move toward each other:
 
 ```cpp
-co_yield S::mark(marks::Left,  lo);
-co_yield S::mark(marks::Right, hi);
+co_yield S::mark(marks::Left,  i);
+co_yield S::mark(marks::Right, j);
 
-while (lo < hi)
+while (i < j)
 {
-    // ... compare, shrink the range ...
-    co_yield S::mark(marks::Left,  lo);    // each call moves its own mark
-    co_yield S::mark(marks::Right, hi);
+    // ... compare, swap, advance i and retreat j ...
+    co_yield S::mark(marks::Left,  i);    // each call moves its own mark
+    co_yield S::mark(marks::Right, j);
 }
 
 co_yield S::clearMark(marks::Left);
@@ -193,21 +187,14 @@ Color colorFor(sortrace::MarkId id)
 > [!NOTE]
 > A renderer should expect ids it has never seen. Falling back to a neutral style, or ignoring the mark, keeps it compatible with algorithms written by others.
 
-### Why custom ids matter to users
-
-| Benefit                                  | Example                                                                     |
-| ---------------------------------------- | --------------------------------------------------------------------------- |
-| Show two things of the same kind         | Both ends of a range, two pointers, two runs being merged.                  |
-| Explain an algorithm in its own terms    | `custom_id(1)` = "gap start" in a Shell Sort variant.                       |
-| Share a vocabulary across your app       | One id table decides colors, labels, tooltips, even sounds.                 |
-| Add meaning without changing the library | No new enum value, no registry edit, no recompilation of `sortrace` itself. |
+Custom ids let you show two things of the same kind (both ends of a range, two pointers), explain an algorithm in its own terms, and share one vocabulary across your app for colors, labels or sounds, all without adding an enum value or editing the library.
 
 ## Reading marks in a renderer
 
 `Playback` exposes the marks that are active at the current position.
 
 | Call               | Returns                                                    |
-| ------------------ | ---------------------------------------------------------- |
+| :----------------- | :--------------------------------------------------------- |
 | `getMarks()`       | Every active mark as `std::map<MarkId, int>` (id → index). |
 | `getMarkIndex(id)` | The index of `id`, or `-1` if it is not set.               |
 
@@ -257,7 +244,7 @@ Nothing requires a renderer to look at marks. Skip `getMarks()` and everything e
 ## Behavior reference
 
 | Situation                                | What happens to the mark                                                                     |
-| ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| :--------------------------------------- | :------------------------------------------------------------------------------------------- |
 | `swap(i, j)`                             | It **follows its element** to the new index.                                                 |
 | `overwrite(i, v)`                        | It **stays at index `i`**. Marks track elements moved by swaps, not values written in place. |
 | `mark(id, i)` on an id already set       | It moves to `i`. No `clearMark` is needed first.                                             |
@@ -267,14 +254,8 @@ Nothing requires a renderer to look at marks. Skip `getMarks()` and everything e
 | `stop()` or `clear()` on the playback    | All marks are removed.                                                                       |
 | The run ends (`Sorted`)                  | Marks are **not** cleared automatically. Algorithms must clear their own.                    |
 
-### What marks cost
-
-| Aspect     | Value                                                                                            |
-| ---------- | ------------------------------------------------------------------------------------------------ |
-| Statistics | `operationCount` only. Comparisons, swaps, reads and writes are untouched.                       |
-| Data       | Never modified.                                                                                  |
-| Validation | `mark` indices are bounds-checked when the step is yielded and again when a recording is loaded. |
+Marks cost one operation each: they add to `operationCount` and to nothing else, never modify the data, and have their indices bounds-checked both when the step is yielded and when a recording is loaded.
 
 ---
 
-See also: [Extending sortrace](EXTENDING.md) for adding algorithms and renderers, and [Architecture](ARCHITECTURE.md) for how recordings and playbacks fit together.
+See also: [Extending](EXTENDING.md) to add algorithms and renderers, and [Architecture](ARCHITECTURE.md) for how recordings and playbacks fit together.

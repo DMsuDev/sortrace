@@ -6,52 +6,63 @@
 
 [![C++23](https://img.shields.io/badge/Language-C%2B%2B23-00599C?style=flat&logo=cplusplus&logoColor=white)](https://isocpp.org/)
 [![CMake](https://img.shields.io/badge/Build-CMake-064F8C?style=flat&logo=cmake&logoColor=white)](https://cmake.org/)
+[![CI](https://github.com/DMsuDev/sortrace/actions/workflows/ci.yml/badge.svg)](https://github.com/DMsuDev/sortrace/actions/workflows/ci.yml)
 ![Header only](https://img.shields.io/badge/Header--only-yes-4fdcbf?style=flat)
-![Status](https://img.shields.io/badge/Status-Beta-blue?style=flat)
-![Version](https://img.shields.io/badge/Version-0.1.0-brightgreen?style=flat)
+![Status](https://img.shields.io/badge/Status-beta-orange?style=flat)
+![Version](https://img.shields.io/github/v/release/DMsuDev/sortrace?label=Version&color=brightgreen&style=flat)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey?style=flat)](LICENSE)
 
 </div>
 
-[Quick Start](#quick-start)
+[Installation](#installation)
+• [Quick Start](#quick-start)
+• [Algorithms](#built-in-algorithms)
 • [Examples](#examples)
-• [Installation](docs/INSTALL.md)
-• [Architecture](docs/ARCHITECTURE.md)
-• [Extending](docs/EXTENDING.md)
-• [Marks](docs/MARKS.md)
+• [Documentation](#documentation)
 
 ---
 
-**sortrace** is a header-only C++23 library that runs a sorting algorithm **once** and writes down everything it did: every comparison, swap, write and mark. The result is a plain `Recording` you can replay forward and backward, at any speed, in any form.
-
-It deliberately stops there. **How the data is shown is up to you**: bars, a heatmap, a ring of dots, a terminal table, a sound for every swap or a JSON export. The library never knows about colors, windows or pixels, and it has no dependencies.
-
-Feedback and contributions are welcome. ❤️
-
-> [!NOTE]
-> This project is in **Beta** (`0.1.0`). The API may still change while it settles.
+**Sortrace** is a header-only C++23 library that records a sorting algorithm once and lets you replay that run, forwards or backwards, as many times as you like. Every comparison, swap, write and mark is captured in a standalone `Recording<T>` that holds everything needed to reproduce the run, so the algorithm never has to execute again.
 
 <div align="center">
-  <img src="docs/images/views.svg" alt="The same recording drawn as bars, a heatmap and a circle" width="90%">
+  <img src="docs/images/views.svg" alt="The same recording drawn as bars, a heatmap and a circle" width="85%">
+  <p><em>One recording, many ways to explore it.</em></p>
 </div>
 
-> [!TIP]
-> Bars, heatmap and circle are only examples of what a renderer can do with one recording. They are not built-in modes.
+What you build on top is up to you: bars, a heatmap, a terminal display, sound effects or an export format. Sortrace captures and replays; it never decides how a run should look or sound.
 
-## Highlights
+- **Reversible:** every operation keeps the values it touched, so playback runs backwards without re-running the algorithm.
+- **Marks:** named marks (pivot, minimum, or your own) follow elements through swaps in both directions. See [Marks](docs/MARKS.md).
+- **Consistent statistics:** comparisons, swaps, reads, writes and compute time are counted the same way for every algorithm.
+- **UI friendly:** a `Session` computes in approximate time slices and resumes where it stopped.
+- **Generic:** works with `int`, `std::string` and your own types. Errors are `std::expected` values, and logging goes through a callback.
 
-| Feature                          | What you get                                                                                              |
-| :------------------------------- | :-------------------------------------------------------------------------------------------------------- |
-| **Record once, render anywhere** | A `Recording` is plain data: store it, share it, export it. `recordShared()` feeds several views at once. |
-| **Fully reversible**             | Every operation keeps the values it touches, so playback runs backward without re-simulating.             |
-| **Tracked marks**                | Named marks follow elements through swaps, forward and backward. See [Marks](docs/MARKS.md).              |
-| **Consistent statistics**        | Comparisons, swaps, reads, writes and compute time, counted the same way for every algorithm.             |
-| **Cooperative execution**        | A `Session` works within a time budget and resumes where it stopped, so a UI never stalls.                |
-| **Generic by design**            | Works with `int`, `std::string` or your own types. Errors are `std::expected`; logging is a callback.     |
+## Installation
+
+Sortrace is header-only. It needs a C++23 compiler and CMake 3.23 or newer:
+
+```cmake
+add_subdirectory(third_party/sortrace)
+target_link_libraries(my_app PRIVATE sortrace::sortrace)
+```
+
+`FetchContent`, `find_package`, plain headers, and building the tests and examples are covered in the [installation guide](docs/INSTALL.md).
 
 ## Quick Start
 
-A sortrace application has two phases: **record** a run, then **replay** it. Recording never draws anything; replaying never sorts anything.
+A Sortrace application has two phases: **record** a run, then **replay** it. Recording does not draw anything, and replaying does not sort anything. Choose between two execution modes to compute the recording:
+
+| Mode            | API                        | When to use it                                                                        |
+| :-------------- | :------------------------- | :------------------------------------------------------------------------------------ |
+| **Blocking**    | `record()`                 | Runs to completion in one call; useful for CLI tools and tests.                       |
+| **Incremental** | `Session::compute(budget)` | Resumes across calls with an approximate time budget; useful for UIs and comparisons. |
+
+Both produce a recording for playback. Incremental computation still runs on the calling thread, and a call can exceed its budget. See [Execution](docs/ARCHITECTURE.md#execution) for details.
+
+<details>
+<summary><strong>Blocking: record and replay a complete run</strong></summary>
+
+Run an algorithm once, then step through its recording whenever you need to render a frame:
 
 ```cpp
 #include <sortrace/sortrace.hpp>
@@ -71,9 +82,17 @@ if (playback.load(std::move(recording))) {
 }
 ```
 
-Inside a UI, compute in time slices so the frame never stalls:
+</details>
+
+<details>
+<summary><strong>Incremental: compute in a UI</strong></summary>
+
+Use a `Session` to spread sorting work across frames:
 
 ```cpp
+std::vector<int> data = { 5, 2, 9, 1, 7 };
+Playback<int> playback;
+
 Session<int> session;
 session.setAlgorithm(make<int>(AlgorithmType::MergeSort));
 session.setData(data);
@@ -94,70 +113,37 @@ else if (*progress == Progress::Complete)
 
 `onComputeError` and `onPlaybackError` stand for your application's error reporting.
 
-A `Playback` exposes what a renderer needs:
+</details>
 
-| Call                    | Returns                                        |
-| :---------------------- | :--------------------------------------------- |
-| `getData()`             | The data after every operation applied so far. |
-| `getCurrentOperation()` | The operation the next step will apply.        |
-| `getMarks()`            | Active marks and the elements they point at.   |
-| `isSettled(slot)`       | Whether a slot already holds its final value.  |
-| `getProgress()`         | How far the playback is, from 0 to 1.          |
+<br>
 
-For the full pipeline and guarantees, see [Architecture](docs/ARCHITECTURE.md).
+> Everything a renderer reads (data, marks, the next operation, settled slots) is listed in [Architecture](docs/ARCHITECTURE.md#recording-and-playback).
+
+## Built-in algorithms
+
+Sortrace includes algorithms such as Bubble, Quick, Merge and Heap Sort. The complete list, with average complexity and descriptions, lives in the [algorithm registry](include/sortrace/algorithms/registry.hpp). All built-in algorithms run through the same test suite.
+
+Use `sortrace::algorithms()` to enumerate the registry in your application. You can also [add your own algorithms](docs/EXTENDING.md#add-a-sorting-algorithm).
 
 ## Examples
 
-Everything runs in the terminal and uses only the library and the standard library. The shared drawing code lives in [`examples/common/`](examples/common), so the small examples and the full CLI draw the same bars.
+Everything runs in the terminal with just Sortrace and the standard library.
 
-**`sortrace_cli`** is an interactive terminal program that puts the whole library to work: record an algorithm, watch it replay, step through it with the arrow keys, run a `Session`, and compare algorithms. Type `tour` for a guided walk-through or `help` for every command.
+**`sortrace_cli`** is an interactive tour: record an algorithm, replay it, step through it, run a `Session` and compare algorithms. Type `tour` for a guided walk-through or `help` to see every command.
 
 ```bash
 ./build/bin/sortrace_cli
 ```
 
-Its source is in [`examples/cli/`](examples/cli).
+Eight smaller programs each focus on one idea: recording, sessions, playback, marks, shared views and JSON export. See the [examples guide](examples/README.md).
 
----
+## Documentation
 
-**Small examples** in [`examples/basic/`](examples/basic), one idea each:
-
-| Example                                                     | What it shows                                                                         |
-| :---------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| [record_minimal](examples/basic/record_minimal.cpp)         | `record()`: run to the end in one call and read the statistics                        |
-| [compare_algorithms](examples/basic/compare_algorithms.cpp) | Every algorithm against sorted, reversed, nearly sorted, few-unique and shuffled data |
-| [session_budget](examples/basic/session_budget.cpp)         | `Session`: compute in small pieces, one per frame                                     |
-| [playback_animate](examples/basic/playback_animate.cpp)     | Replay by time with `update(dt)`                                                      |
-| [step_backward](examples/basic/step_backward.cpp)           | Replay by hand, forward and backward                                                  |
-| [marks](examples/basic/marks.cpp)                           | Marks that follow their element through swaps                                         |
-| [shared_views](examples/basic/shared_views.cpp)             | One `recordShared()` run drawn as bars and as a heatmap                               |
-| [export_json](examples/basic/export_json.cpp)               | A `Recording` is plain data: dump it as JSON                                          |
-
-Build them as described in [the installation guide](docs/INSTALL.md#build-the-tests-and-examples); the small ones land in a `basic/` folder next to `sortrace_cli`.
-
-## Built-in algorithms
-
-| Algorithm                       | Average     | Marks     |
-| :------------------------------ | :---------- | :-------- |
-| Bubble, Cocktail, Insertion     | O(n²)       |           |
-| Selection                       | O(n²)       | `Minimum` |
-| Quick (Lomuto, median of three) | O(n log n)  | `Pivot`   |
-| Merge (bottom-up)               | O(n log n)  |           |
-| Heap                            | O(n log n)  |           |
-| Shell                           | O(n log² n) |           |
-
-To add your own, see [Extending sortrace](docs/EXTENDING.md).
-
-## Installation
-
-sortrace is header-only: add it to your CMake project and link it.
-
-```cmake
-add_subdirectory(third_party/sortrace)
-target_link_libraries(my_app PRIVATE sortrace::sortrace)
-```
-
-Requirements, `find_package`, building the tests and examples, and the CMake options are in [the installation guide](docs/INSTALL.md).
+- [Installation](docs/INSTALL.md): add Sortrace to a project, build the tests and examples, CMake options.
+- [Architecture](docs/ARCHITECTURE.md): the recording pipeline, execution modes, statistics and guarantees.
+- [Marks](docs/MARKS.md): tracking elements through a run.
+- [Extending](docs/EXTENDING.md): add an algorithm or build a renderer.
+- [Examples](examples/README.md): the interactive CLI and the small programs.
 
 ## Contributing
 
